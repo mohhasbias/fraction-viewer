@@ -13,7 +13,8 @@ package com.fractionviewer
 	public class CircleFraction extends Sprite
 	{
 		private var radius:int;
-		private var pembilang:int, penyebut:int;
+		private var _pembilang:int;
+		private var _penyebut:int;
 		
 		private var x_origin:int, y_origin:int;
 		
@@ -21,6 +22,8 @@ package com.fractionviewer
 		private const FILL_COLOR_EMPTY:int = 0xFFFFFF;
 		private const FILL_COLOR_SELECTED:int = 0x23ED36;
 		private const LINE_THICKNESS_OUTER:int = 5;
+		
+		public const VALUE_CHANGED:String = "Value Changed";
 		
 		public function CircleFraction(radius:int = 90, pembilang:int = 3, penyebut:int = 4)
 		{
@@ -44,12 +47,6 @@ package com.fractionviewer
 			removeEventListener(Event.ADDED_TO_STAGE, init);
 			
 			addEventListener(Event.ENTER_FRAME, onEnterFrame);
-			addEventListener(MouseEvent.CLICK, onClick);
-		}
-		
-		private function onClick(e:MouseEvent):void
-		{
-			this.penyebut += 1;
 		}
 		
 		private function onEnterFrame(e:Event):void
@@ -61,11 +58,7 @@ package com.fractionviewer
 			}
 			
 			// draw placeholders
-			var placeholder:Shape = new Shape();
-			placeholder.graphics.lineStyle(LINE_THICKNESS_OUTER, STROKE_COLOR_OUTER);
-			placeholder.graphics.beginFill(FILL_COLOR_EMPTY);
-			placeholder.graphics.drawCircle(x_origin, y_origin, radius);
-			placeholder.graphics.endFill();
+			var placeholder = createPlaceholder();
 			addChild(placeholder);
 			
 			// theta setup
@@ -175,6 +168,39 @@ package com.fractionviewer
 				//control_circle.graphics.drawCircle(control_points[i].x, control_points[i].y, 1);
 			//}
 			//addChild(control_circle);
+		}
+		
+		private function createPlaceholder():Shape 
+		{
+			var placeholder:Shape = new Shape();
+			placeholder.graphics.lineStyle(LINE_THICKNESS_OUTER, STROKE_COLOR_OUTER);
+			placeholder.graphics.beginFill(FILL_COLOR_EMPTY);
+			placeholder.graphics.drawCircle(x_origin, y_origin, radius);
+			placeholder.graphics.endFill();
+			
+			return placeholder;
+		}
+		
+		public function get pembilang():int 
+		{
+			return _pembilang;
+		}
+		
+		public function set pembilang(value:int):void 
+		{
+			_pembilang = value;
+			dispatchEvent(new Event(VALUE_CHANGED));
+		}
+		
+		public function get penyebut():int 
+		{
+			return _penyebut;
+		}
+		
+		public function set penyebut(value:int):void 
+		{
+			_penyebut = value;
+			dispatchEvent(new Event(VALUE_CHANGED));
 		}
 	}
 
