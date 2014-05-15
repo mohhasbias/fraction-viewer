@@ -8,12 +8,12 @@ package com.fractionviewer
 	 * ...
 	 * @author Moh Hasbi Assidiqi
 	 */
-	[SWF(width="1920", height="1080", frameRate="24", backgroundColor="#CCCCCC")]
+	[SWF(width="960", height="540", frameRate="24", backgroundColor="#CCCCCC")]
 	public class Main extends Sprite 
 	{
 		private var circle_fraction:CircleFraction;
 		
-		public function Main():void 
+		public function Main()
 		{
 			if (stage) init();
 			else addEventListener(Event.ADDED_TO_STAGE, init);
