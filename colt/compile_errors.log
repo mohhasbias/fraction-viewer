@@ -1,0 +1,5 @@
+C:\Users\rumaisyah\.colt_as\storage\54472ec3\incremental\com\fractionviewer\CircleFraction.as(38): col: 30 Warning: return value for function 'codeUpdate' has no type declaration.
+
+		public function codeUpdate() {
+		                           ^
+

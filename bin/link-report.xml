@@ -1,0 +1,249 @@
+<report>
+  <scripts>
+    <script name="C:\Program Files (x86)\COLT-AS\lib\colt.swc(codeOrchestra.actionScript.collections.util:CollectionsLanguageUtil)" mod="1369407494000" size="14813" optimizedsize="5888">
+      <def id="codeOrchestra.actionScript.collections.util:CollectionsLanguageUtil" />
+      <pre id="Object" />
+      <dep id="AS3" />
+      <dep id="codeOrchestra.actionScript.collections.util:CastUtil" />
+      <dep id="flash.utils:Dictionary" />
+      <dep id="Error" />
+    </script>
+    <script name="C:\Program Files (x86)\COLT-AS\lib\colt.swc(codeOrchestra.actionScript.enums.util:EnumBase)" mod="1369407494000" size="902" optimizedsize="420">
+      <def id="codeOrchestra.actionScript.enums.util:EnumBase" />
+      <pre id="Object" />
+      <dep id="AS3" />
+      <dep id="Error" />
+    </script>
+    <script name="C:\Users\rumaisyah\Documents\p3ai\MengenalPecahan_2\FractionViewerAS3\src\com\fractionviewer\Main.as" mod="1400079353387" size="2286" optimizedsize="1587">
+      <def id="com.fractionviewer:Main" />
+      <pre id="flash.display:Sprite" />
+      <dep id="flash.events:Event" />
+      <dep id="com.fractionviewer:CircleFraction" />
+      <dep id="com.fractionviewer:ModelDependencies_com_fractionviewer" />
+      <dep id="com.fractionviewer:LiveCodingSessionStarter" />
+      <dep id="AS3" />
+      <dep id="codeOrchestra.actionScript.liveCoding.util:LiveCodeRegistry" />
+      <dep id="codeOrchestra.actionScript.liveCoding.util:MethodUpdateEvent" />
+      <dep id="com.fractionviewer:LiveMethod_com_fractionviewer_Main_init" />
+      <dep id="com.fractionviewer:LiveMethod_com_fractionviewer_Main_live_initialize_Main" />
+    </script>
+    <script name="LiveMethod_com_fractionviewer_Main_live_initialize_Main" mod="0" size="1505" optimizedsize="1082">
+      <def id="com.fractionviewer:LiveMethod_com_fractionviewer_Main_live_initialize_Main" />
+      <pre id="Object" />
+      <dep id="codeOrchestra.actionScript.logging.logUtil:LogUtil" />
+      <dep id="codeOrchestra.actionScript.liveCoding.util:LiveCodingCodeFlowUtil" />
+      <dep id="codeOrchestra.actionScript.liveCoding.util:LiveCodeRegistry" />
+      <dep id="com.fractionviewer:Main" />
+      <dep id="Error" />
+    </script>
+    <script name="LiveMethod_com_fractionviewer_CircleFraction_live_initialize_CircleFraction" mod="0" size="1715" optimizedsize="1212">
+      <def id="com.fractionviewer:LiveMethod_com_fractionviewer_CircleFraction_live_initialize_CircleFraction" />
+      <pre id="Object" />
+      <dep id="codeOrchestra.actionScript.logging.logUtil:LogUtil" />
+      <dep id="codeOrchestra.actionScript.liveCoding.util:LiveCodingCodeFlowUtil" />
+      <dep id="com.fractionviewer:CircleFraction" />
+      <dep id="codeOrchestra.actionScript.liveCoding.util:LiveCodeRegistry" />
+      <dep id="Error" />
+    </script>
+    <script name="C:\Program Files (x86)\COLT-AS\lib\colt.swc(codeOrchestra.actionScript.liveCoding.util:MethodUpdateEvent)" mod="1369407494000" size="1216" optimizedsize="583">
+      <def id="codeOrchestra.actionScript.liveCoding.util:MethodUpdateEvent" />
+      <pre id="flash.events:Event" />
+      <dep id="AS3" />
+    </script>
+    <script name="C:\Program Files (x86)\COLT-AS\lib\colt.swc(codeOrchestra.actionScript.logging.logUtil:LogUtil)" mod="1383022936000" size="8353" optimizedsize="4399">
+      <def id="codeOrchestra.actionScript.logging.logUtil:LogUtil" />
+      <pre id="Object" />
+      <dep id="flash.events:Event" />
+      <dep id="flash.net:LocalConnection" />
+      <dep id="ArgumentError" />
+      <dep id="Math" />
+      <dep id="flash.events:DataEvent" />
+      <dep id="flash.events:IOErrorEvent" />
+      <dep id="flash.utils:getTimer" />
+      <dep id="flash.events:SecurityErrorEvent" />
+      <dep id="Error" />
+      <dep id="flash.net:XMLSocket" />
+      <dep id="flash.utils:setTimeout" />
+      <dep id="flash.system:fscommand" />
+      <dep id="Date" />
+      <dep id="AS3" />
+      <dep id="flash.system:Capabilities" />
+      <dep id="flash.events:StatusEvent" />
+      <dep id="XML" />
+      <dep id="flash.utils:Dictionary" />
+    </script>
+    <script name="ModelDependencies_com_fractionviewer" mod="0" size="1264" optimizedsize="976">
+      <def id="com.fractionviewer:ModelDependencies_com_fractionviewer" />
+      <pre id="Object" />
+      <dep id="codeOrchestra.actionScript.collections.util:ModelDependencies_codeOrchestra_actionScript_collections_util" />
+      <dep id="codeOrchestra.actionScript.enums.util:ModelDependencies_codeOrchestra_actionScript_enums_util" />
+      <dep id="com.fractionviewer:CircleFraction" />
+      <dep id="codeOrchestra.actionScript.liveCoding.util:ModelDependencies_codeOrchestra_actionScript_liveCoding_util" />
+      <dep id="codeOrchestra.actionScript.logging.logUtil:ModelDependencies_codeOrchestra_actionScript_logging_logUtil" />
+      <dep id="codeOrchestra.actionScript.extensionMethods.methods:ModelDependencies_codeOrchestra_actionScript_extensionMethods_methods" />
+      <dep id="com.fractionviewer:Main" />
+      <dep id="codeOrchestra.actionScript.util:ModelDependencies_codeOrchestra_actionScript_util" />
+    </script>
+    <script name="LiveCodingSessionStarter" mod="0" size="876" optimizedsize="580">
+      <def id="com.fractionviewer:LiveCodingSessionStarter" />
+      <pre id="Object" />
+      <dep id="codeOrchestra.actionScript.logging.logUtil:LogUtil" />
+      <dep id="codeOrchestra.actionScript.liveCoding.util:LiveCodingCodeFlowUtil" />
+      <dep id="codeOrchestra.actionScript.liveCoding.util:LiveCodeRegistry" />
+    </script>
+    <script name="C:\Program Files (x86)\COLT-AS\lib\colt.swc(codeOrchestra.actionScript.liveCoding.util:LiveCodeRegistry)" mod="1369407494000" size="9443" optimizedsize="6267">
+      <def id="codeOrchestra.actionScript.liveCoding.util:LiveCodeRegistry" />
+      <pre id="flash.events:EventDispatcher" />
+      <pre id="Object" />
+      <dep id="codeOrchestra.actionScript.liveCoding.util:MethodType" />
+      <dep id="codeOrchestra.actionScript.logging.logUtil:LogUtil" />
+      <dep id="flash.events:Event" />
+      <dep id="flash.net:URLRequest" />
+      <dep id="flash.events:DataEvent" />
+      <dep id="flash.events:IOErrorEvent" />
+      <dep id="flash.display:Loader" />
+      <dep id="flash.system:ApplicationDomain" />
+      <dep id="Error" />
+      <dep id="codeOrchestra.actionScript.liveCoding.util:IAssetUpdate" />
+      <dep id="flash.net:URLLoaderDataFormat" />
+      <dep id="Date" />
+      <dep id="AS3" />
+      <dep id="codeOrchestra.actionScript.collections.util:CollectionsLanguageUtil" />
+      <dep id="codeOrchestra.actionScript.liveCoding.util:MethodUpdateEvent" />
+      <dep id="flash.utils:getDefinitionByName" />
+      <dep id="flash.net:URLLoader" />
+      <dep id="flash.utils:Dictionary" />
+      <dep id="flash.system:LoaderContext" />
+      <dep id="codeOrchestra.actionScript.liveCoding.util:AssetUpdateEvent" />
+    </script>
+    <script name="C:\Program Files (x86)\COLT-AS\lib\colt.swc(codeOrchestra.actionScript.enums.util:ModelDependencies_codeOrchestra_actionScript_enums_util)" mod="1369407494000" size="808" optimizedsize="348">
+      <def id="codeOrchestra.actionScript.enums.util:ModelDependencies_codeOrchestra_actionScript_enums_util" />
+      <pre id="Object" />
+      <dep id="AS3" />
+      <dep id="codeOrchestra.actionScript.enums.util:EnumBase" />
+    </script>
+    <script name="C:\Program Files (x86)\COLT-AS\lib\colt.swc(codeOrchestra.actionScript.collections.util:CastUtil)" mod="1369407494000" size="1177" optimizedsize="528">
+      <def id="codeOrchestra.actionScript.collections.util:CastUtil" />
+      <pre id="Object" />
+      <dep id="AS3" />
+      <dep id="Error" />
+    </script>
+    <script name="C:\Program Files (x86)\COLT-AS\lib\colt.swc(codeOrchestra.actionScript.util:ModelDependencies_codeOrchestra_actionScript_util)" mod="1369407494000" size="746" optimizedsize="324">
+      <def id="codeOrchestra.actionScript.util:ModelDependencies_codeOrchestra_actionScript_util" />
+      <pre id="Object" />
+      <dep id="AS3" />
+    </script>
+    <script name="C:\Program Files (x86)\COLT-AS\lib\colt.swc(codeOrchestra.actionScript.extensionMethods.methods:ModelDependencies_codeOrchestra_actionScript_extensionMethods_methods)" mod="1369407494000" size="948" optimizedsize="404">
+      <def id="codeOrchestra.actionScript.extensionMethods.methods:ModelDependencies_codeOrchestra_actionScript_extensionMethods_methods" />
+      <pre id="Object" />
+      <dep id="AS3" />
+    </script>
+    <script name="C:\Program Files (x86)\COLT-AS\lib\colt.swc(codeOrchestra.actionScript.liveCoding.util:LiveCodingCodeFlowUtil)" mod="1377526004000" size="2314" optimizedsize="1132">
+      <def id="codeOrchestra.actionScript.liveCoding.util:LiveCodingCodeFlowUtil" />
+      <pre id="Object" />
+      <dep id="flash.events:Event" />
+      <dep id="AS3" />
+      <dep id="Error" />
+      <dep id="flash.display:Sprite" />
+    </script>
+    <script name="C:\Program Files (x86)\COLT-AS\lib\colt.swc(codeOrchestra.actionScript.collections.util:ModelDependencies_codeOrchestra_actionScript_collections_util)" mod="1369407494000" size="868" optimizedsize="372">
+      <def id="codeOrchestra.actionScript.collections.util:ModelDependencies_codeOrchestra_actionScript_collections_util" />
+      <pre id="Object" />
+      <dep id="AS3" />
+      <dep id="codeOrchestra.actionScript.collections.util:CollectionsLanguageUtil" />
+      <dep id="codeOrchestra.actionScript.collections.util:CastUtil" />
+    </script>
+    <script name="C:\Program Files (x86)\COLT-AS\lib\colt.swc(codeOrchestra.actionScript.liveCoding.util:IAssetUpdate)" mod="1369407494000" size="577" optimizedsize="225">
+      <def id="codeOrchestra.actionScript.liveCoding.util:IAssetUpdate" />
+      <pre id="Object" />
+      <dep id="AS3" />
+    </script>
+    <script name="LiveMethod_com_fractionviewer_Main_init" mod="0" size="1568" optimizedsize="1181">
+      <def id="com.fractionviewer:LiveMethod_com_fractionviewer_Main_init" />
+      <pre id="Object" />
+      <dep id="flash.events:Event" />
+      <dep id="codeOrchestra.actionScript.logging.logUtil:LogUtil" />
+      <dep id="codeOrchestra.actionScript.liveCoding.util:LiveCodingCodeFlowUtil" />
+      <dep id="com.fractionviewer:CircleFraction" />
+      <dep id="codeOrchestra.actionScript.liveCoding.util:LiveCodeRegistry" />
+      <dep id="com.fractionviewer:Main" />
+      <dep id="Error" />
+    </script>
+    <script name="C:\Program Files (x86)\COLT-AS\lib\colt.swc(codeOrchestra.actionScript.logging.logUtil:ModelDependencies_codeOrchestra_actionScript_logging_logUtil)" mod="1369407494000" size="857" optimizedsize="368">
+      <def id="codeOrchestra.actionScript.logging.logUtil:ModelDependencies_codeOrchestra_actionScript_logging_logUtil" />
+      <pre id="Object" />
+      <dep id="AS3" />
+    </script>
+    <script name="C:\Program Files (x86)\COLT-AS\lib\colt.swc(codeOrchestra.actionScript.liveCoding.util:ModelDependencies_codeOrchestra_actionScript_liveCoding_util)" mod="1369407494000" size="857" optimizedsize="368">
+      <def id="codeOrchestra.actionScript.liveCoding.util:ModelDependencies_codeOrchestra_actionScript_liveCoding_util" />
+      <pre id="Object" />
+      <dep id="codeOrchestra.actionScript.liveCoding.util:LiveCodingCodeFlowUtil" />
+      <dep id="AS3" />
+      <dep id="codeOrchestra.actionScript.liveCoding.util:LiveCodeRegistry" />
+      <dep id="codeOrchestra.actionScript.liveCoding.util:MethodUpdateEvent" />
+      <dep id="codeOrchestra.actionScript.liveCoding.util:AssetUpdateEvent" />
+    </script>
+    <script name="C:\Program Files (x86)\COLT-AS\lib\colt.swc(codeOrchestra.actionScript.liveCoding.util:AssetUpdateEvent)" mod="1369407494000" size="1719" optimizedsize="796">
+      <def id="codeOrchestra.actionScript.liveCoding.util:AssetUpdateEvent" />
+      <pre id="flash.events:Event" />
+      <dep id="AS3" />
+    </script>
+    <script name="C:\Users\rumaisyah\Documents\p3ai\MengenalPecahan_2\FractionViewerAS3\src\com\fractionviewer\CircleFraction.as" mod="1400079435475" size="2502" optimizedsize="1674">
+      <def id="com.fractionviewer:CircleFraction" />
+      <pre id="flash.display:Sprite" />
+      <dep id="flash.events:Event" />
+      <dep id="com.fractionviewer:LiveMethod_com_fractionviewer_CircleFraction_init" />
+      <dep id="com.fractionviewer:ModelDependencies_com_fractionviewer" />
+      <dep id="AS3" />
+      <dep id="codeOrchestra.actionScript.liveCoding.util:LiveCodeRegistry" />
+      <dep id="codeOrchestra.actionScript.liveCoding.util:MethodUpdateEvent" />
+      <dep id="com.fractionviewer:LiveMethod_com_fractionviewer_CircleFraction_live_initialize_CircleFraction" />
+    </script>
+    <script name="C:\Program Files (x86)\COLT-AS\lib\colt.swc(codeOrchestra.actionScript.liveCoding.util:MethodType)" mod="1369407494000" size="1588" optimizedsize="847">
+      <def id="codeOrchestra.actionScript.liveCoding.util:MethodType" />
+      <pre id="codeOrchestra.actionScript.enums.util:EnumBase" />
+      <dep id="AS3" />
+    </script>
+    <script name="LiveMethod_com_fractionviewer_CircleFraction_init" mod="0" size="1879" optimizedsize="1423">
+      <def id="com.fractionviewer:LiveMethod_com_fractionviewer_CircleFraction_init" />
+      <pre id="Object" />
+      <dep id="flash.events:Event" />
+      <dep id="codeOrchestra.actionScript.logging.logUtil:LogUtil" />
+      <dep id="codeOrchestra.actionScript.liveCoding.util:LiveCodingCodeFlowUtil" />
+      <dep id="com.fractionviewer:CircleFraction" />
+      <dep id="codeOrchestra.actionScript.liveCoding.util:LiveCodeRegistry" />
+      <dep id="Math" />
+      <dep id="Error" />
+    </script>
+  </scripts>
+  <external-defs>
+    <ext id="flash.system:ApplicationDomain" />
+    <ext id="AS3" />
+    <ext id="flash.net:LocalConnection" />
+    <ext id="flash.events:IOErrorEvent" />
+    <ext id="XML" />
+    <ext id="Error" />
+    <ext id="flash.net:URLLoaderDataFormat" />
+    <ext id="flash.net:URLLoader" />
+    <ext id="flash.utils:getDefinitionByName" />
+    <ext id="flash.utils:getTimer" />
+    <ext id="Math" />
+    <ext id="flash.events:Event" />
+    <ext id="flash.net:URLRequest" />
+    <ext id="flash.utils:setTimeout" />
+    <ext id="flash.system:Capabilities" />
+    <ext id="ArgumentError" />
+    <ext id="flash.utils:Dictionary" />
+    <ext id="flash.events:EventDispatcher" />
+    <ext id="Date" />
+    <ext id="flash.events:StatusEvent" />
+    <ext id="flash.events:SecurityErrorEvent" />
+    <ext id="flash.events:DataEvent" />
+    <ext id="flash.net:XMLSocket" />
+    <ext id="Object" />
+    <ext id="flash.system:fscommand" />
+    <ext id="flash.display:Sprite" />
+    <ext id="flash.display:Loader" />
+    <ext id="flash.system:LoaderContext" />
+  </external-defs>
+</report>
