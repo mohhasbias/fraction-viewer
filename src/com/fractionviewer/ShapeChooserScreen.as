@@ -21,6 +21,9 @@ package com.fractionviewer
 		public static const CIRCLE_CLICKED:String = "Circle Clicked";
 		public static const RECT_CLICKED:String = "Rect Clicked";
 		
+		private var _circle_button:SimpleButton;
+		private var _rect_button:SimpleButton;
+		
 		public function ShapeChooserScreen() 
 		{
 			super();
@@ -38,17 +41,19 @@ package com.fractionviewer
 			
 			trace(parent);
 			
-			var circle_button:SimpleButton = createCircleButton();
-			circle_button.x = stage.stageWidth/3 - (circle_button.width/2);
-			circle_button.y = stage.stageHeight/3 - (circle_button.height/2);
+			var radius:Number = 120;
+			
+			_circle_button = createCircleButton(radius);
+			_circle_button.x = stage.stageWidth/3 - (circle_button.width/2);
+			_circle_button.y = stage.stageHeight/3 - (circle_button.height/2);
 		
 			addChild(circle_button);
 			circle_button.addEventListener(MouseEvent.CLICK, onCircleClicked);
 			
 			
-			var rect_button:SimpleButton = createRectButton();
-			rect_button.x = stage.stageWidth/3*2 - (rect_button.width/2);
-			rect_button.y = stage.stageHeight / 3 - (rect_button.height / 2);// + (circle_button.height - rect_button.height) / 2;
+			_rect_button = createRectButton(2.25*radius, 1.75*radius);
+			_rect_button.x = stage.stageWidth/3*2 - (rect_button.width/2);
+			_rect_button.y = stage.stageHeight / 3 - (rect_button.height / 2);// + (circle_button.height - rect_button.height) / 2;
 			
 			addChild(rect_button);
 			rect_button.addEventListener(MouseEvent.CLICK, onRectClicked);
@@ -108,6 +113,16 @@ package com.fractionviewer
 			button.hitTestState = rect_regular;
 			
 			return button;
+		}
+		
+		public function get circle_button():SimpleButton 
+		{
+			return _circle_button;
+		}
+		
+		public function get rect_button():SimpleButton 
+		{
+			return _rect_button;
 		}
 	}
 
