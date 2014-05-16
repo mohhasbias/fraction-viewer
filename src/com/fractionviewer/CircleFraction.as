@@ -107,6 +107,9 @@ package com.fractionviewer
 			var theta_diff:Number = Math.abs(theta_end - theta_start);
 			var theta_diff_minimum:Number = 2 * Math.PI / 6;
 			var control_point_length:Number;
+			var control_point_angle:Number;
+			var control_point:Point;
+			var anchor_point:Point;
 			if ( theta_diff >  theta_diff_minimum) {
 				var sub_theta_start:Number = theta_start;
 				var sub_theta_end:Number = sub_theta_start + theta_diff_minimum;
@@ -118,12 +121,12 @@ package com.fractionviewer
 					var sub_theta_diff:Number = sub_theta_end - sub_theta_start;
 					
 					control_point_length = the_radius / Math.cos((sub_theta_diff)/2);
-					var control_point_angle:Number = sub_theta_start + ((sub_theta_diff) / 2.0);
-					var control_point:Point = Point.polar(control_point_length, control_point_angle);
+					control_point_angle = sub_theta_start + ((sub_theta_diff) / 2.0);
+					control_point = Point.polar(control_point_length, control_point_angle);
 					control_point.x += this.x_origin;
 					control_point.y += this.y_origin;
 					
-					var anchor_point:Point = Point.polar(the_radius, sub_theta_end);
+					anchor_point = Point.polar(the_radius, sub_theta_end);
 					anchor_point.x += this.x_origin;
 					anchor_point.y += this.y_origin;
 				
@@ -138,12 +141,12 @@ package com.fractionviewer
 				}
 			} else {
 				control_point_length = the_radius / Math.cos((theta_diff)/2);
-				var control_point_angle = theta_start + ((theta_diff) / 2.0);
-				var control_point:Point = Point.polar(control_point_length, control_point_angle);
+				control_point_angle = theta_start + ((theta_diff) / 2.0);
+				control_point = Point.polar(control_point_length, control_point_angle);
 				control_point.x += this.x_origin;
 				control_point.y += this.y_origin;
 				
-				var anchor_point:Point = Point.polar(the_radius, theta_end);
+				anchor_point = Point.polar(the_radius, theta_end);
 				anchor_point.x += this.x_origin;
 				anchor_point.y += this.y_origin;
 			

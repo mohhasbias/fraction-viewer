@@ -27,9 +27,21 @@ package com.fractionviewer
 			removeEventListener(Event.ADDED_TO_STAGE, init);
 			// entry point
 			
+			// initialize screens
 			var screen1:ShapeChooserScreen = new ShapeChooserScreen();
 			
+			// activate first screen
 			addChild(screen1);
+			screen1.addEventListener(ShapeChooserScreen.CIRCLE_CLICKED,
+				function(e:Event):void {
+					trace("circle selected");
+					
+				});
+				
+			screen1.addEventListener(ShapeChooserScreen.RECT_CLICKED,
+				function(e:Event):void {
+					trace("rect selected");
+				});
 		}
 		
 		private function onCircleClicked(e:MouseEvent):void

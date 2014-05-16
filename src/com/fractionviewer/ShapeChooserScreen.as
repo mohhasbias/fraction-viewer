@@ -4,7 +4,7 @@ package com.fractionviewer
 	import flash.display.SimpleButton;
 	import flash.display.Sprite;
 	import flash.events.Event;
-	import flash.filters.DropShadowFilter;
+	import flash.events.MouseEvent;
 	import flash.filters.GlowFilter;
 	
 	/**
@@ -17,6 +17,9 @@ package com.fractionviewer
 		private const LINE_THICKNESS_OUTER:int = 5;
 		private const STROKE_COLOR_OUTER:int = 0x666666;
 		private const GLOW_COLOR:int = 0xFF9900;
+		
+		public static const CIRCLE_CLICKED:String = "Circle Clicked";
+		public static const RECT_CLICKED:String = "Rect Clicked";
 		
 		public function ShapeChooserScreen() 
 		{
@@ -36,16 +39,27 @@ package com.fractionviewer
 			trace(parent);
 			
 			var circle_button:SimpleButton = createCircleButton();
-			circle_button.x = 100;
-			circle_button.y = 100;
+			circle_button.x = stage.stageWidth/3 - (circle_button.width/2);
+			circle_button.y = stage.stageHeight/3 - (circle_button.height/2);
 		
 			addChild(circle_button);
+			circle_button.addEventListener(MouseEvent.CLICK, onCircleClicked);
+			
 			
 			var rect_button:SimpleButton = createRectButton();
-			rect_button.x = 300;
-			rect_button.y = 100 + (circle_button.height - rect_button.height)/2;
+			rect_button.x = stage.stageWidth/3*2 - (rect_button.width/2);
+			rect_button.y = stage.stageHeight / 3 - (rect_button.height / 2);// + (circle_button.height - rect_button.height) / 2;
 			
 			addChild(rect_button);
+			rect_button.addEventListener(MouseEvent.CLICK, onRectClicked);
+		}
+		
+		private function onCircleClicked(e:MouseEvent):void {
+			dispatchEvent(new Event(CIRCLE_CLICKED));
+		}
+		
+		private function onRectClicked(e:MouseEvent):void {
+			dispatchEvent(new Event(RECT_CLICKED));
 		}
 		
 		private function createCircleButton(radius:int = 90):SimpleButton {
