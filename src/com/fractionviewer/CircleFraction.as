@@ -58,7 +58,7 @@ package com.fractionviewer
 			}
 			
 			// draw placeholders
-			var placeholder = createPlaceholder();
+			var placeholder:Shape = createPlaceholder();
 			addChild(placeholder);
 			
 			// theta setup
@@ -67,18 +67,19 @@ package com.fractionviewer
 			
 			
 			// draw pembilang
-			for (var i:int = 0; this.penyebut > 1 && i < this.pembilang; i++)
+			var i:int;
+			for (i = 0; this.penyebut > 1 && i < this.pembilang; i++)
 			{
-				var theta_start = theta_offset + i * theta_diff;
-				var theta_end = theta_offset + (i + 1) * theta_diff;
+				var theta_start:Number = theta_offset + i * theta_diff;
+				var theta_end:Number = theta_offset + (i + 1) * theta_diff;
 			
 				drawSector(theta_start, theta_end);
 			}
 			
 			// draw penyebut
-			for (var i:int = 0; this.penyebut > 1 && i < this.penyebut; i++)
+			for (i = 0; this.penyebut > 1 && i < this.penyebut; i++)
 			{
-				var theta = theta_offset + i * theta_diff;
+				var theta:Number = theta_offset + i * theta_diff;
 				
 				var p:Point = Point.polar(this.radius, theta);
 				
@@ -94,7 +95,7 @@ package com.fractionviewer
 		
 		private function drawSector(theta_start:Number, theta_end:Number):void 
 		{	
-			var the_radius = this.radius - LINE_THICKNESS_OUTER/2;
+			var the_radius:Number = this.radius - LINE_THICKNESS_OUTER/2;
 			
 			var start_point:Point = Point.polar(the_radius, theta_start);
 			start_point.x += this.x_origin;
@@ -105,18 +106,19 @@ package com.fractionviewer
 			
 			var theta_diff:Number = Math.abs(theta_end - theta_start);
 			var theta_diff_minimum:Number = 2 * Math.PI / 6;
+			var control_point_length:Number;
 			if ( theta_diff >  theta_diff_minimum) {
 				var sub_theta_start:Number = theta_start;
-				var sub_theta_end = sub_theta_start + theta_diff_minimum;
+				var sub_theta_end:Number = sub_theta_start + theta_diff_minimum;
 				if ( sub_theta_end > theta_end ) {
 					sub_theta_end = theta_end;
 				}					
 				
 				while (sub_theta_start < theta_end) {
-					var sub_theta_diff = sub_theta_end - sub_theta_start;
+					var sub_theta_diff:Number = sub_theta_end - sub_theta_start;
 					
-					var control_point_length = the_radius / Math.cos((sub_theta_diff)/2);
-					var control_point_angle = sub_theta_start + ((sub_theta_diff) / 2.0);
+					control_point_length = the_radius / Math.cos((sub_theta_diff)/2);
+					var control_point_angle:Number = sub_theta_start + ((sub_theta_diff) / 2.0);
 					var control_point:Point = Point.polar(control_point_length, control_point_angle);
 					control_point.x += this.x_origin;
 					control_point.y += this.y_origin;
@@ -135,7 +137,7 @@ package com.fractionviewer
 					}
 				}
 			} else {
-				var control_point_length = the_radius / Math.cos((theta_diff)/2);
+				control_point_length = the_radius / Math.cos((theta_diff)/2);
 				var control_point_angle = theta_start + ((theta_diff) / 2.0);
 				var control_point:Point = Point.polar(control_point_length, control_point_angle);
 				control_point.x += this.x_origin;

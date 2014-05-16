@@ -10,7 +10,6 @@ package com.fractionviewer
 	 * @author Moh Hasbi Assidiqi
 	 */
 	[SWF(width="960",height="540",frameRate="24",backgroundColor="#CCCCCC")]
-	
 	public class Main extends Sprite
 	{
 		private var circle_fraction:CircleFraction;
@@ -27,13 +26,10 @@ package com.fractionviewer
 		{
 			removeEventListener(Event.ADDED_TO_STAGE, init);
 			// entry point
-			circle_fraction = new CircleFraction();
-			circle_fraction.x = 100;
-			circle_fraction.y = 100;
 			
-			addChild(circle_fraction);
+			var screen1:ShapeChooserScreen = new ShapeChooserScreen();
 			
-			circle_fraction.addEventListener(MouseEvent.CLICK, onCircleClicked);
+			addChild(screen1);
 		}
 		
 		private function onCircleClicked(e:MouseEvent):void
