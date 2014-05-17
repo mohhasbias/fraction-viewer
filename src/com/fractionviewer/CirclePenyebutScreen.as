@@ -1,5 +1,6 @@
 package com.fractionviewer 
 {
+	import flash.display.Shape;
 	import flash.display.SimpleButton;
 	import flash.display.Sprite;
 	import flash.events.Event;
@@ -38,7 +39,26 @@ package com.fractionviewer
 				MouseEvent.CLICK,
 				function (e:MouseEvent):void {
 					trace("ouch");
+					circle_fraction.penyebut += 1;
 				});
+				
+			var rect_width:int = 150;
+			var rect_height:int = 50;
+			var round_rect:Shape = new Shape();
+			round_rect.graphics.lineStyle(1, 0x666666);
+			round_rect.graphics.beginFill(0xEFEFEF);
+			round_rect.graphics.drawRoundRect(0, 0, rect_width, rect_height, 7, 7);
+			round_rect.graphics.endFill();
+			var round_rect_darker:Shape = new Shape();
+			round_rect_darker.graphics.lineStyle(1, 0x666666);
+			round_rect_darker.graphics.beginFill(0xD4D4D4);
+			round_rect_darker.graphics.drawRoundRect(0, 0, rect_width, rect_height, 7, 7);
+			round_rect_darker.graphics.endFill();
+			
+			var next_button:SimpleButton = new SimpleButton();
+			next_button.upState = next_button.downState = next_button.hitTestState = round_rect;
+			next_button.overState = round_rect_darker;
+			addChild(next_button);
 		}
 	}
 
