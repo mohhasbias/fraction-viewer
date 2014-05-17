@@ -12,7 +12,7 @@ package com.fractionviewer
 	 */
 	public class CircleFraction extends Sprite
 	{
-		private var radius:int;
+		private var _radius:int;
 		private var _pembilang:int;
 		private var _penyebut:int;
 		
@@ -206,6 +206,17 @@ package com.fractionviewer
 		{
 			_penyebut = value;
 			dispatchEvent(new Event(VALUE_CHANGED));
+		}
+		
+		public function get radius():int 
+		{
+			return _radius;
+		}
+		
+		public function set radius(value:int):void 
+		{
+			trace("set radius");
+			_radius = value;
 		}
 	}
 
