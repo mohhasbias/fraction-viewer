@@ -6,6 +6,7 @@ package com.fractionviewer
 	import flash.events.Event;
 	import flash.events.MouseEvent;
 	import flash.filters.GlowFilter;
+	import com.greensock.TweenLite;
 	
 	/**
 	 * ...
@@ -60,11 +61,34 @@ package com.fractionviewer
 		}
 		
 		private function onCircleClicked(e:MouseEvent):void {
-			dispatchEvent(new Event(CIRCLE_CLICKED));
+			trace(circle_button);
+			swapChildren(circle_button, rect_button);
+			circle_button.enabled = false;
+			circle_button.overState = circle_button.downState;
+			TweenLite.to(rect_button, 0.5, { alpha: 0 } );
+			TweenLite.to(
+				circle_button, 0.5, 
+				{
+					x: stage.stageWidth / 2 - circle_button.width / 2, 
+					y: circle_button.y,
+					onComplete: function():void {
+						trace("completed");
+						dispatchEvent(new Event(CIRCLE_CLICKED));
+						}} );
 		}
 		
 		private function onRectClicked(e:MouseEvent):void {
-			dispatchEvent(new Event(RECT_CLICKED));
+			rect_button.enabled = false;
+			rect_button.overState = rect_button.downState;
+			TweenLite.to(circle_button, 0.5, { alpha: 0 } );
+			TweenLite.to(
+				rect_button, 0.5, 
+				{
+					x: stage.stageWidth / 2 - rect_button.width / 2, 
+					y: rect_button.y,
+					onComplete: function():void {
+						dispatchEvent(new Event(RECT_CLICKED));
+						trace("completed")}} );
 		}
 		
 		private function createCircleButton(radius:int = 90):SimpleButton {

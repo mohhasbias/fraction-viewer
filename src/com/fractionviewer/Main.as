@@ -15,7 +15,8 @@ package com.fractionviewer
 	[SWF(width="960",height="540",frameRate="24",backgroundColor="#CCCCCC")]
 	public class Main extends Sprite
 	{
-		private var circle_fraction:CircleFraction;
+		//private var circle_fraction:CircleFraction;
+		private var _active_screen:Sprite;
 		
 		public function Main()
 		{
@@ -28,37 +29,36 @@ package com.fractionviewer
 		private function init(e:Event = null):void
 		{
 			removeEventListener(Event.ADDED_TO_STAGE, init);
-			// entry point
+			// entry point	
 			
 			// initialize screens
 			var screen1:ShapeChooserScreen = new ShapeChooserScreen();
-			
-			// activate first screen
-			addChild(screen1);
 			screen1.addEventListener(ShapeChooserScreen.CIRCLE_CLICKED,
 				function(e:Event):void {
 					trace("circle selected");
-					screen1.swapChildren(screen1.circle_button, screen1.rect_button);
-					screen1.circle_button.enabled = false;
-					TweenLite.to(screen1.rect_button, 0.5, { alpha: 0 } );
-					TweenLite.to(
-						screen1.circle_button, 0.5, 
-						{
-							x: stage.stageWidth / 2 - screen1.circle_button.width / 2, 
-							y: screen1.circle_button.y,
-							onComplete: function() {
-								trace("compeleted")}} );
+					active_screen = null;
 				});
 				
 			screen1.addEventListener(ShapeChooserScreen.RECT_CLICKED,
 				function(e:Event):void {
 					trace("rect selected");
+					active_screen = null;
 				});
+			
+			// activate first screen
+			active_screen = screen1;
 		}
 		
-		private function onCircleClicked(e:MouseEvent):void
-		{
-			circle_fraction.penyebut += 1;
+		private function set active_screen(screen:Sprite):void {
+			if ( _active_screen) {
+				removeChild(_active_screen);
+				_active_screen = screen;
+			}
+				
+			_active_screen = screen;
+			if(_active_screen){
+				addChild(_active_screen);
+			}
 		}
 	}
 
