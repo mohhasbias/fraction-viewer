@@ -8,6 +8,7 @@ package com.fractionviewer
 	import flash.text.TextField;
 	import flash.text.TextFormat;
 	import flash.text.TextFormatAlign;
+	import mx.binding.utils.BindingUtils;
 	
 	/**
 	 * ...
@@ -45,18 +46,30 @@ package com.fractionviewer
 					circle_fraction.penyebut += 1;
 				});
 				
-			var oneThirdStageWidth = stage.stageWidth / 3;
-			var oneThirdStageHeight = stage.stageHeight / 3;
+			var oneThirdStageWidth:Number = stage.stageWidth / 3;
+			var oneThirdStageHeight:Number = stage.stageHeight / 3;
 				
 			var next_button:Sprite = createButton("Next");
 			next_button.x = 2 * oneThirdStageWidth;
-			next_button.y = 2 * oneThirdStageHeight;
+			next_button.y = 2 * oneThirdStageHeight + oneThirdStageHeight/2;
 			addChild(next_button);
 			
 			var back_button:Sprite = createButton("Back");
 			back_button.x = oneThirdStageWidth - back_button.width;
-			back_button.y = 2 * oneThirdStageHeight;
+			back_button.y = 2 * oneThirdStageHeight + oneThirdStageHeight/2;
 			addChild(back_button);
+			
+			var display_penyebut:TextField = new TextField();
+			display_penyebut.text = circle_fraction.penyebut.toString();
+			addChild(display_penyebut);
+			BindingUtils.bindProperty(display_penyebut, "text", circle_fraction, "penyebut");
+			
+			BindingUtils.bindSetter(
+				function(valueReceived:int):void {
+					display_penyebut.text = valueReceived + " bagian";
+				},
+				circle_fraction,
+				"penyebut");
 		}
 		
 		private function createButton(text:String, width:int = 150, height:int = 50):Sprite 

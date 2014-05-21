@@ -197,6 +197,7 @@ package com.fractionviewer
 			dispatchEvent(new Event(VALUE_CHANGED));
 		}
 		
+		[Bindable]
 		public function get penyebut():int 
 		{
 			return _penyebut;
