@@ -45,7 +45,8 @@ package com.fractionviewer
 			screen_list[CIRCLE_PENYEBUT_SCREEN] = screen2; 
 			
 			// activate first screen
-			active_screen = screen1;
+			//active_screen = screen_list[SHAPE_SELECT_SCREEN];
+			active_screen = screen_list[CIRCLE_PENYEBUT_SCREEN];
 		}
 		
 		private function createAndSetupShapeChooserScreen():ShapeChooserScreen {
