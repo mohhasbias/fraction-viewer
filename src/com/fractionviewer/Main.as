@@ -38,10 +38,11 @@ package com.fractionviewer
 			// entry point	
 			
 			// initialize screens
+			var circle_fraction:CircleFraction = new CircleFraction(120, 0, 1);
 			screen_list = new Array();
 			var screen1:ShapeChooserScreen = createAndSetupShapeChooserScreen();
-			var screen2:CirclePenyebutScreen = createAndSetupCirclePenyebutScreen();
-			var screen3:CirclePembilangScreen = createAndSetupCirclePembilangScreen();
+			var screen2:CirclePenyebutScreen = createAndSetupCirclePenyebutScreen(circle_fraction);
+			var screen3:CirclePembilangScreen = createAndSetupCirclePembilangScreen(circle_fraction);
 			
 			screen_list[SHAPE_SELECT_SCREEN] = screen1; 
 			screen_list[CIRCLE_PENYEBUT_SCREEN] = screen2; 
@@ -70,8 +71,8 @@ package com.fractionviewer
 			return screen;
 		}
 		
-		private function createAndSetupCirclePenyebutScreen():CirclePenyebutScreen {
-			var screen:CirclePenyebutScreen = new CirclePenyebutScreen();
+		private function createAndSetupCirclePenyebutScreen(circle_fraction:CircleFraction):CirclePenyebutScreen {
+			var screen:CirclePenyebutScreen = new CirclePenyebutScreen(circle_fraction);
 			
 			screen.addEventListener(CirclePenyebutScreen.NEXT_CLICKED, function (e:Event):void {
 				trace("next...");
@@ -86,8 +87,8 @@ package com.fractionviewer
 			return screen;
 		}
 		
-		private function createAndSetupCirclePembilangScreen():CirclePembilangScreen {
-			var screen:CirclePembilangScreen = new CirclePembilangScreen();
+		private function createAndSetupCirclePembilangScreen(circle_fraction:CircleFraction):CirclePembilangScreen {
+			var screen:CirclePembilangScreen = new CirclePembilangScreen();// (circle_fraction);
 			
 			return screen;
 		}

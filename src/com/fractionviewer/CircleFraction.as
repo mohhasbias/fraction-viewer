@@ -23,7 +23,7 @@ package com.fractionviewer
 		private const FILL_COLOR_SELECTED:int = 0x23ED36;
 		private const LINE_THICKNESS_OUTER:int = 5;
 		
-		public const VALUE_CHANGED:String = "Value Changed";
+		public static const VALUE_CHANGED:String = "Value Changed";
 		
 		public function CircleFraction(radius:int = 90, pembilang:int = 3, penyebut:int = 4)
 		{

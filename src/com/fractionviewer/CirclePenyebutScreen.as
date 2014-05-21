@@ -20,10 +20,18 @@ package com.fractionviewer
 		public static const NEXT_CLICKED:String = "Next Clicked";
 		public static const BACK_CLICKED:String = "Back Clicked";
 		
-		public function CirclePenyebutScreen() 
+		private var circle_fraction:CircleFraction;
+		
+		public function CirclePenyebutScreen(circle_fraction:CircleFraction = null) 
 		{
 			super();
 			
+			if(circle_fraction){
+				this.circle_fraction = circle_fraction;
+			} else {
+				this.circle_fraction = new CircleFraction();
+			}
+				
 			if (stage) {
 				init();
 			} else {
@@ -35,7 +43,7 @@ package com.fractionviewer
 			removeEventListener(Event.ADDED_TO_STAGE, init);
 			// entry point
 			
-			var circle_fraction:CircleFraction = new CircleFraction(120, 0, 1);
+			//var circle_fraction:CircleFraction = new CircleFraction(120, 0, 1);
 			trace(circle_fraction.radius);
 			circle_fraction.x = stage.stageWidth / 2 - (circle_fraction.radius);
 			circle_fraction.y = stage.stageHeight / 3 - (circle_fraction.radius) - 2; // hard coded position
