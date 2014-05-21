@@ -48,14 +48,16 @@ package com.fractionviewer
 			circle_fraction.x = stage.stageWidth / 2 - (circle_fraction.radius);
 			circle_fraction.y = stage.stageHeight / 3 - (circle_fraction.radius) - 2; // hard coded position
 			circle_fraction.buttonMode = true;
-			addChild(circle_fraction);
 			
-			circle_fraction.addEventListener(
+			var placeholder:Sprite = new Sprite();
+			placeholder.addChild(circle_fraction);
+			placeholder.addEventListener(
 				MouseEvent.CLICK,
 				function (e:MouseEvent):void {
 					trace("ouch");
 					circle_fraction.penyebut += 1;
 				});
+			addChild(placeholder);
 				
 			var oneThirdStageWidth:Number = stage.stageWidth / 3;
 			var oneThirdStageHeight:Number = stage.stageHeight / 3;

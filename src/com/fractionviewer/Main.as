@@ -88,7 +88,7 @@ package com.fractionviewer
 		}
 		
 		private function createAndSetupCirclePembilangScreen(circle_fraction:CircleFraction):CirclePembilangScreen {
-			var screen:CirclePembilangScreen = new CirclePembilangScreen();// (circle_fraction);
+			var screen:CirclePembilangScreen = new CirclePembilangScreen(circle_fraction);
 			
 			return screen;
 		}

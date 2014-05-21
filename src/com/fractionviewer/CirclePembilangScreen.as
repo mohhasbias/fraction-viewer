@@ -14,10 +14,17 @@ package com.fractionviewer
 	 */
 	public class CirclePembilangScreen extends Sprite 
 	{
+		private var circle_fraction:CircleFraction;
 		
-		public function CirclePembilangScreen() 
+		public function CirclePembilangScreen(circle_fraction:CircleFraction = null) 
 		{
 			super();
+			
+			if (circle_fraction) {
+				this.circle_fraction = circle_fraction;
+			} else {
+				this.circle_fraction = new CircleFraction();
+			}
 			
 			if (stage) {
 				init();
@@ -30,20 +37,22 @@ package com.fractionviewer
 			removeEventListener(Event.ADDED_TO_STAGE, init);
 			// entry point
 			
-			var circle_fraction:CircleFraction = new CircleFraction(90,0,4);
+			//var circle_fraction:CircleFraction = new CircleFraction(90,0,4);
 			trace(circle_fraction.radius);
 			circle_fraction.x = stage.stageWidth / 2 - (circle_fraction.radius);
 			circle_fraction.y = stage.stageHeight / 3 - (circle_fraction.radius) - 2; // hard coded position
 			circle_fraction.buttonMode = true;
-			addChild(circle_fraction);
 			
-			circle_fraction.addEventListener(
+			var placeholder:Sprite = new Sprite();
+			placeholder.addChild(circle_fraction);
+			placeholder.addEventListener(
 				MouseEvent.CLICK,
 				function (e:MouseEvent):void {
 					trace("ouch");
 					circle_fraction.pembilang += 1;
 					trace("pembilang: " + circle_fraction.pembilang);
 				});
+			addChild(placeholder);	
 				
 			var oneThirdStageWidth:Number = stage.stageWidth / 3;
 			var oneThirdStageHeight:Number = stage.stageHeight / 3;
