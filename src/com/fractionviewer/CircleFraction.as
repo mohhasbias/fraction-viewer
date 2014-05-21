@@ -186,6 +186,7 @@ package com.fractionviewer
 			return placeholder;
 		}
 		
+		[Bindable]
 		public function get pembilang():int 
 		{
 			return _pembilang;
@@ -193,7 +194,9 @@ package com.fractionviewer
 		
 		public function set pembilang(value:int):void 
 		{
-			_pembilang = value;
+			if( value >= 0 && value <= penyebut){
+				_pembilang = value;
+			}
 			dispatchEvent(new Event(VALUE_CHANGED));
 		}
 		

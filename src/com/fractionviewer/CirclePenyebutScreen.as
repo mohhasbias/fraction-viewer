@@ -66,8 +66,8 @@ package com.fractionviewer
 			//display_penyebut.border = true;
 			display_penyebut.autoSize = TextFieldAutoSize.CENTER;
 			display_penyebut.x = stage.stageWidth / 2;
-			display_penyebut.y = 2 * oneThirdStageHeight;
-			display_penyebut.defaultTextFormat = new TextFormat("Verdana", 36, 0x000000, true);
+			display_penyebut.y = 2 * oneThirdStageHeight - oneThirdStageHeight/3;
+			display_penyebut.defaultTextFormat = new TextFormat("Verdana", 72, 0x000000, true);
 			addChild(display_penyebut);
 			
 			BindingUtils.bindSetter(
