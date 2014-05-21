@@ -69,6 +69,14 @@ package com.fractionviewer
 		private function createAndSetupCirclePenyebutScreen():CirclePenyebutScreen {
 			var screen:CirclePenyebutScreen = new CirclePenyebutScreen();
 			
+			screen.addEventListener(CirclePenyebutScreen.NEXT_CLICKED, function (e:Event):void {
+				trace("next...");
+			});
+			
+			screen.addEventListener(CirclePenyebutScreen.BACK_CLICKED, function (e:Event):void {
+				trace("back..");
+			});
+			
 			return screen;
 		}
 		

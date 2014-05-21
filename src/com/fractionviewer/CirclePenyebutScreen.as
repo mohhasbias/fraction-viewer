@@ -17,8 +17,8 @@ package com.fractionviewer
 	 */
 	public class CirclePenyebutScreen extends Sprite 
 	{
-		public const NEXT_CLICKED:String = "Next Clicked";
-		public const BACK_CLICKED:String = "Back Clicked";
+		public static const NEXT_CLICKED:String = "Next Clicked";
+		public static const BACK_CLICKED:String = "Back Clicked";
 		
 		public function CirclePenyebutScreen() 
 		{
