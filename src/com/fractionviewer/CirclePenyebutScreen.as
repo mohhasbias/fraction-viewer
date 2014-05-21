@@ -6,6 +6,7 @@ package com.fractionviewer
 	import flash.events.Event;
 	import flash.events.MouseEvent;
 	import flash.text.TextField;
+	import flash.text.TextFieldAutoSize;
 	import flash.text.TextFormat;
 	import flash.text.TextFormatAlign;
 	import mx.binding.utils.BindingUtils;
@@ -16,6 +17,8 @@ package com.fractionviewer
 	 */
 	public class CirclePenyebutScreen extends Sprite 
 	{
+		public const NEXT_CLICKED:String = "Next Clicked";
+		public const BACK_CLICKED:String = "Back Clicked";
 		
 		public function CirclePenyebutScreen() 
 		{
@@ -60,9 +63,12 @@ package com.fractionviewer
 			addChild(back_button);
 			
 			var display_penyebut:TextField = new TextField();
-			display_penyebut.text = circle_fraction.penyebut.toString();
+			//display_penyebut.border = true;
+			display_penyebut.autoSize = TextFieldAutoSize.CENTER;
+			display_penyebut.x = stage.stageWidth / 2;
+			display_penyebut.y = 2 * oneThirdStageHeight;
+			display_penyebut.defaultTextFormat = new TextFormat("Verdana", 36, 0x000000, true);
 			addChild(display_penyebut);
-			BindingUtils.bindProperty(display_penyebut, "text", circle_fraction, "penyebut");
 			
 			BindingUtils.bindSetter(
 				function(valueReceived:int):void {
@@ -70,6 +76,14 @@ package com.fractionviewer
 				},
 				circle_fraction,
 				"penyebut");
+				
+			next_button.addEventListener(MouseEvent.CLICK, function(e:MouseEvent):void {
+				dispatchEvent(new Event(NEXT_CLICKED));
+			});
+			
+			back_button.addEventListener(MouseEvent.CLICK, function(e:MouseEvent):void {
+				dispatchEvent(new Event(BACK_CLICKED));
+			});
 		}
 		
 		private function createButton(text:String, width:int = 150, height:int = 50):Sprite 
