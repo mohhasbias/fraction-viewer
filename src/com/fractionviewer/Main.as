@@ -22,6 +22,7 @@ package com.fractionviewer
 		
 		private const SHAPE_SELECT_SCREEN:int = 0;
 		private const CIRCLE_PENYEBUT_SCREEN:int = 1;
+		private const CIRCLE_PEMBILANG_SCREEN:int = 2;
 		
 		public function Main()
 		{
@@ -40,13 +41,16 @@ package com.fractionviewer
 			screen_list = new Array();
 			var screen1:ShapeChooserScreen = createAndSetupShapeChooserScreen();
 			var screen2:CirclePenyebutScreen = createAndSetupCirclePenyebutScreen();
+			var screen3:CirclePembilangScreen = createAndSetupCirclePembilangScreen();
 			
 			screen_list[SHAPE_SELECT_SCREEN] = screen1; 
 			screen_list[CIRCLE_PENYEBUT_SCREEN] = screen2; 
+			screen_list[CIRCLE_PEMBILANG_SCREEN] = screen3;
 			
 			// activate first screen
 			//active_screen = screen_list[SHAPE_SELECT_SCREEN];
-			active_screen = screen_list[CIRCLE_PENYEBUT_SCREEN];
+			//active_screen = screen_list[CIRCLE_PENYEBUT_SCREEN];
+			active_screen = screen_list[CIRCLE_PEMBILANG_SCREEN];
 		}
 		
 		private function createAndSetupShapeChooserScreen():ShapeChooserScreen {
@@ -77,6 +81,12 @@ package com.fractionviewer
 				trace("back..");
 				active_screen = screen_list[SHAPE_SELECT_SCREEN];
 			});
+			
+			return screen;
+		}
+		
+		private function createAndSetupCirclePembilangScreen():CirclePembilangScreen {
+			var screen:CirclePembilangScreen = new CirclePembilangScreen();
 			
 			return screen;
 		}

@@ -68,7 +68,7 @@ package com.fractionviewer
 			
 			// draw pembilang
 			var i:int;
-			for (i = 0; this.penyebut > 1 && i < this.pembilang; i++)
+			for (i = 0; this.penyebut > 0 && i < this.pembilang; i++)
 			{
 				var theta_start:Number = theta_offset + i * theta_diff;
 				var theta_end:Number = theta_offset + (i + 1) * theta_diff;
