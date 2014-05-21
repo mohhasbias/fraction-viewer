@@ -77,11 +77,11 @@ package com.fractionviewer
 				circle_fraction,
 				"penyebut");
 				
-			next_button.addEventListener(MouseEvent.CLICK, function(e:MouseEvent):void {
+			next_button.addEventListener(MouseEvent.MOUSE_DOWN, function(e:MouseEvent):void {
 				dispatchEvent(new Event(NEXT_CLICKED));
 			});
 			
-			back_button.addEventListener(MouseEvent.CLICK, function(e:MouseEvent):void {
+			back_button.addEventListener(MouseEvent.MOUSE_DOWN, function(e:MouseEvent):void {
 				dispatchEvent(new Event(BACK_CLICKED));
 			});
 		}

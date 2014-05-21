@@ -19,7 +19,7 @@ package com.fractionviewer
 		private var x_origin:int, y_origin:int;
 		
 		private const STROKE_COLOR_OUTER:int = 0x666666;
-		private const FILL_COLOR_EMPTY:int = 0xFFFFFF;
+		private const FILL_COLOR_EMPTY:int = 0xF7F7F7;
 		private const FILL_COLOR_SELECTED:int = 0x23ED36;
 		private const LINE_THICKNESS_OUTER:int = 5;
 		

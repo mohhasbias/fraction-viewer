@@ -75,6 +75,7 @@ package com.fractionviewer
 			
 			screen.addEventListener(CirclePenyebutScreen.BACK_CLICKED, function (e:Event):void {
 				trace("back..");
+				active_screen = screen_list[SHAPE_SELECT_SCREEN];
 			});
 			
 			return screen;

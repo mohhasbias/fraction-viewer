@@ -49,7 +49,7 @@ package com.fractionviewer
 			_circle_button.y = stage.stageHeight/3 - (circle_button.height/2);
 		
 			addChild(circle_button);
-			circle_button.addEventListener(MouseEvent.CLICK, onCircleClicked);
+			circle_button.addEventListener(MouseEvent.MOUSE_DOWN, onCircleClicked);
 			
 			
 			_rect_button = createRectButton(2.25*radius, 1.75*radius);
@@ -57,22 +57,27 @@ package com.fractionviewer
 			_rect_button.y = stage.stageHeight / 3 - (rect_button.height / 2);// + (circle_button.height - rect_button.height) / 2;
 			
 			addChild(rect_button);
-			rect_button.addEventListener(MouseEvent.CLICK, onRectClicked);
+			rect_button.addEventListener(MouseEvent.MOUSE_DOWN, onRectClicked);
 		}
 		
 		private function onCircleClicked(e:MouseEvent):void {
 			trace(circle_button);
+			var animation_duration:Number = 0.5;
 			swapChildren(circle_button, rect_button);
 			circle_button.enabled = false;
 			circle_button.overState = circle_button.downState;
-			TweenLite.to(rect_button, 0.5, { alpha: 0 } );
+			TweenLite.to(rect_button, animation_duration, { alpha: 0 } );
 			TweenLite.to(
-				circle_button, 0.5, 
+				circle_button, animation_duration, 
 				{
 					x: stage.stageWidth / 2 - circle_button.width / 2, 
 					y: circle_button.y,
 					onComplete: function():void {
 						trace("completed");
+						circle_button.x = stage.stageWidth / 3 - (circle_button.width / 2);
+						circle_button.enabled = true;
+						circle_button.overState = circle_button.hitTestState;
+						rect_button.alpha = 1;
 						dispatchEvent(new Event(CIRCLE_CLICKED));
 						}} );
 		}
@@ -110,8 +115,8 @@ package com.fractionviewer
 			circle_glow.filters = [new GlowFilter(GLOW_COLOR, 0.8, 27, 27)];
 			
 			button.overState = circle_glow;
-			
-			button.hitTestState = circle_regular;
+			button.hitTestState = circle_glow;
+			//button.hitTestState = circle_regular;
 			
 			return button;
 		}
@@ -134,7 +139,8 @@ package com.fractionviewer
 			var button:SimpleButton = new SimpleButton();
 			button.upState = button.downState = rect_regular;
 			button.overState = rect_glow;
-			button.hitTestState = rect_regular;
+			//button.hitTestState = rect_regular;
+			button.hitTestState = rect_glow;
 			
 			return button;
 		}
