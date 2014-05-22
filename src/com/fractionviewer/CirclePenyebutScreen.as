@@ -92,6 +92,9 @@ package com.fractionviewer
 			});
 			
 			addEventListener(Event.ADDED_TO_STAGE, function(e:Event):void {
+				if ( !contains(circle_fraction) ) {
+					addChild(circle_fraction);
+				}
 				circle_fraction.addEventListener(MouseEvent.CLICK, onCircleClicked);
 			});
 		}

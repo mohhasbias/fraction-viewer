@@ -48,20 +48,11 @@ package com.fractionviewer
 			circle_fraction.x = stage.stageWidth / 2 - (circle_fraction.radius);
 			circle_fraction.y = stage.stageHeight / 3 - (circle_fraction.radius) - 2; // hard coded position
 			circle_fraction.buttonMode = true;
-			
-			var placeholder:Sprite = new Sprite();
-			placeholder.addChild(circle_fraction);
-			placeholder.addEventListener(
+			circle_fraction.addEventListener(
 				MouseEvent.CLICK,
-				function (e:MouseEvent):void {
-					trace("ouch");
-					circle_fraction.pembilang += 1;
-					trace("pembilang: " + circle_fraction.pembilang);
-				});
-			addChild(placeholder);	
+				onCircleClicked);
+			addChild(circle_fraction);	
 			
-			addChild(circle_fraction);
-				
 			var oneThirdStageWidth:Number = stage.stageWidth / 3;
 			var oneThirdStageHeight:Number = stage.stageHeight / 3;
 				
@@ -98,6 +89,25 @@ package com.fractionviewer
 			back_button.addEventListener(MouseEvent.MOUSE_DOWN, function(e:MouseEvent):void {
 				dispatchEvent(new Event(BACK_CLICKED));
 			});
+			
+			addEventListener(Event.ADDED_TO_STAGE, function() {
+				trace("contains circle_fraction: " + contains(circle_fraction));
+				if ( !contains(circle_fraction) ) {
+					addChild(circle_fraction);
+				}
+				display_penyebut.text = circle_fraction.pembilang + "/" + circle_fraction.penyebut;
+				circle_fraction.addEventListener(MouseEvent.CLICK, onCircleClicked);
+			});
+			
+			addEventListener(Event.REMOVED_FROM_STAGE, function() {
+				circle_fraction.removeEventListener(MouseEvent.CLICK, onCircleClicked);
+			});
+		}
+		
+		private function onCircleClicked(e:MouseEvent):void {
+			trace("ouch");
+			circle_fraction.pembilang += 1;
+			trace("pembilang: " + circle_fraction.pembilang);
 		}
 		
 		private function createButton(text:String, width:int = 150, height:int = 50):Sprite 
