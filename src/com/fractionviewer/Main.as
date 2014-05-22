@@ -49,9 +49,9 @@ package com.fractionviewer
 			screen_list[CIRCLE_PEMBILANG_SCREEN] = screen3;
 			
 			// activate first screen
-			active_screen = screen_list[SHAPE_SELECT_SCREEN];
+			//active_screen = screen_list[SHAPE_SELECT_SCREEN];
 			//active_screen = screen_list[CIRCLE_PENYEBUT_SCREEN];
-			//active_screen = screen_list[CIRCLE_PEMBILANG_SCREEN];
+			active_screen = screen_list[CIRCLE_PEMBILANG_SCREEN];
 		}
 		
 		private function createAndSetupShapeChooserScreen():ShapeChooserScreen {
@@ -89,6 +89,16 @@ package com.fractionviewer
 		
 		private function createAndSetupCirclePembilangScreen(circle_fraction:CircleFraction):CirclePembilangScreen {
 			var screen:CirclePembilangScreen = new CirclePembilangScreen(circle_fraction);
+			
+			//screen.addEventListener(CirclePenyebutScreen.NEXT_CLICKED, function (e:Event):void {
+				//trace("next...");
+				//active_screen = screen_list[CIRCLE_PEMBILANG_SCREEN];
+			//});
+			
+			screen.addEventListener(CirclePembilangScreen.BACK_CLICKED, function (e:Event):void {
+				trace("back..");
+				active_screen = screen_list[CIRCLE_PENYEBUT_SCREEN];
+			});
 			
 			return screen;
 		}
