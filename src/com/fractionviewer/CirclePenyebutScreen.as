@@ -1,5 +1,6 @@
 package com.fractionviewer 
 {
+	import com.greensock.TweenLite;
 	import flash.display.Shape;
 	import flash.display.SimpleButton;
 	import flash.display.Sprite;
@@ -84,7 +85,16 @@ package com.fractionviewer
 			});
 			
 			back_button.addEventListener(MouseEvent.MOUSE_DOWN, function(e:MouseEvent):void {
-				dispatchEvent(new Event(BACK_CLICKED));
+				TweenLite.to(display_penyebut, 0.5, { alpha: 0 } );
+				TweenLite.to(back_button, 0.5, { alpha: 0 } );
+				TweenLite.to(next_button, 0.5, { alpha: 0 } );
+				TweenLite.to(circle_fraction, 0.5, 
+					{ 
+						x: stage.stageWidth / 3 - (circle_fraction.width / 2),
+						onComplete: function():void {
+							dispatchEvent(new Event(BACK_CLICKED));
+						}
+					});
 			});
 			
 			addEventListener(Event.REMOVED_FROM_STAGE, function (e:Event):void {
@@ -95,7 +105,12 @@ package com.fractionviewer
 				if ( !contains(circle_fraction) ) {
 					addChild(circle_fraction);
 				}
+				circle_fraction.x = stage.stageWidth / 2 - (circle_fraction.radius);
+				circle_fraction.y = stage.stageHeight / 3 - (circle_fraction.radius) - 2;
 				circle_fraction.addEventListener(MouseEvent.CLICK, onCircleClicked);
+				display_penyebut.alpha = 1;
+				back_button.alpha = 1;
+				next_button.alpha = 1;
 			});
 		}
 		
