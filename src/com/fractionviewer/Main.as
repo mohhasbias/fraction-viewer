@@ -38,7 +38,8 @@ package com.fractionviewer
 			// entry point	
 			
 			// initialize screens
-			var circle_fraction:CircleFraction = new CircleFraction(120, 0, 1);
+			var circle_radius:Number = 120;
+			var circle_fraction:CircleFraction = new CircleFraction(circle_radius, 0, 1);
 			screen_list = new Array();
 			var screen1:ShapeChooserScreen = createAndSetupShapeChooserScreen();
 			var screen2:CirclePenyebutScreen = createAndSetupCirclePenyebutScreen(circle_fraction);
@@ -49,9 +50,26 @@ package com.fractionviewer
 			screen_list[CIRCLE_PEMBILANG_SCREEN] = screen3;
 			
 			// activate first screen
-			active_screen = screen_list[SHAPE_SELECT_SCREEN];
+			//active_screen = screen_list[SHAPE_SELECT_SCREEN];
 			//active_screen = screen_list[CIRCLE_PENYEBUT_SCREEN];
 			//active_screen = screen_list[CIRCLE_PEMBILANG_SCREEN];
+			
+			//var rect_fraction:RectFraction = new RectFraction(2.25 * circle_radius, 1.75 * circle_radius);
+			//rect_fraction.x = stage.stageWidth / 2 - rect_fraction.rect_width / 2;
+			//rect_fraction.y = stage.stageHeight / 2 - rect_fraction.rect_height / 2;
+			//addChild(rect_fraction);
+			
+			var rects:Array = new Array();
+			rects.push(new RectFraction(2.25 * circle_radius, 1.75 * circle_radius, 1, 2));
+			rects.push(new RectFraction(2.25 * circle_radius, 1.75 * circle_radius, 2, 3));
+			rects.push(new RectFraction(2.25 * circle_radius, 1.75 * circle_radius, 3, 4));
+			rects.push(new RectFraction(2.25 * circle_radius, 1.75 * circle_radius, 5, 6));
+			
+			for (var i:int = 0; i < rects.length; i++) {
+				rects[i].x = (i % 3) * (rects[i].rect_width + 15);
+				rects[i].y = Math.floor(i / 3) * (rects[i].rect_height + 15);
+				addChild(rects[i]);
+			}
 		}
 		
 		private function createAndSetupShapeChooserScreen():ShapeChooserScreen {
