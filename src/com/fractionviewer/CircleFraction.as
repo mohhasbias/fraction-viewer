@@ -10,7 +10,7 @@ package com.fractionviewer
 	 * ...
 	 * @author Moh Hasbi Assidiqi
 	 */
-	public class CircleFraction extends Sprite
+	public class CircleFraction extends ShapeFraction
 	{
 		private var _radius:int;
 		private var _pembilang:int;
@@ -221,6 +221,16 @@ package com.fractionviewer
 		{
 			trace("set radius");
 			_radius = value;
+		}
+		
+		override public function get view_width():int 
+		{
+			return radius*2;
+		}
+		
+		override public function get view_height():int 
+		{
+			return radius*2;
 		}
 	}
 

@@ -47,10 +47,10 @@ package com.fractionviewer
 			// entry point
 			
 			// fraction placement
-			the_fraction.x = stage.stageWidth / 2 - (the_fraction.radius);
-			the_fraction.y = stage.stageHeight / 3 - (the_fraction.radius) - 2; // hard coded position
+			the_fraction.x = stage.stageWidth / 2 - (the_fraction.view_width/2);
+			the_fraction.y = stage.stageHeight / 3 - (the_fraction.view_height/2) - 2; // hard coded position
 			the_fraction.buttonMode = true;
-			the_fraction.addEventListener(MouseEvent.CLICK, onCircleClicked);
+			the_fraction.addEventListener(MouseEvent.CLICK, onShapeClicked);
 			addChild(the_fraction);
 				
 			// navigation buttons
@@ -103,7 +103,7 @@ package com.fractionviewer
 			
 			// screen behaviour
 			addEventListener(Event.REMOVED_FROM_STAGE, function (e:Event):void {
-				the_fraction.removeEventListener(MouseEvent.CLICK, onCircleClicked);
+				the_fraction.removeEventListener(MouseEvent.CLICK, onShapeClicked);
 			});
 			
 			addEventListener(Event.ADDED_TO_STAGE, function(e:Event):void {
@@ -112,14 +112,14 @@ package com.fractionviewer
 				}
 				the_fraction.x = stage.stageWidth / 2 - (the_fraction.radius);
 				the_fraction.y = stage.stageHeight / 3 - (the_fraction.radius) - 2;
-				the_fraction.addEventListener(MouseEvent.CLICK, onCircleClicked);
+				the_fraction.addEventListener(MouseEvent.CLICK, onShapeClicked);
 				display_penyebut.alpha = 1;
 				back_button.alpha = 1;
 				next_button.alpha = 1;
 			});
 		}
 		
-		private function onCircleClicked(e:MouseEvent):void {
+		private function onShapeClicked(e:MouseEvent):void {
 			trace("ouch");
 			the_fraction.penyebut += 1;
 		}
