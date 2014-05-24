@@ -50,11 +50,12 @@ package com.fractionviewer
 			screen_list[CIRCLE_PEMBILANG_SCREEN] = screen3;
 			
 			// activate first screen
-			active_screen = screen_list[SHAPE_SELECT_SCREEN];
+			//active_screen = screen_list[SHAPE_SELECT_SCREEN];
 			//active_screen = screen_list[CIRCLE_PENYEBUT_SCREEN];
 			//active_screen = screen_list[CIRCLE_PEMBILANG_SCREEN];
 			
-			//RectFraction.test();
+			//RectFraction.test(stage);
+			PenyebutScreen.test(stage);
 		}
 		
 		private function createAndSetupShapeChooserScreen():ShapeChooserScreen {

@@ -1,7 +1,10 @@
 package com.fractionviewer 
 {
-	import flash.display.Sprite;
+	import com.greensock.TweenLite;
 	import flash.display.Shape;
+	import flash.display.SimpleButton;
+	import flash.display.Sprite;
+	import flash.display.Stage;
 	import flash.events.Event;
 	import flash.events.MouseEvent;
 	import flash.text.TextField;
@@ -9,29 +12,29 @@ package com.fractionviewer
 	import flash.text.TextFormat;
 	import flash.text.TextFormatAlign;
 	import mx.binding.utils.BindingUtils;
-	import flash.display.SimpleButton;
 	
 	/**
 	 * ...
 	 * @author Moh Hasbi Assidiqi
 	 */
-	public class CirclePembilangScreen extends Sprite 
+	public class PenyebutScreen extends Sprite 
 	{
-		private var circle_fraction:CircleFraction;
-		
-		public static const TEST_CLICKED:String = "Next Clicked";
+		public static const NEXT_CLICKED:String = "Next Clicked";
 		public static const BACK_CLICKED:String = "Back Clicked";
 		
-		public function CirclePembilangScreen(circle_fraction:CircleFraction = null) 
+		private var the_fraction:CircleFraction;
+		
+		public function PenyebutScreen(circle_fraction:CircleFraction = null) 
 		{
 			super();
 			
-			if (circle_fraction) {
-				this.circle_fraction = circle_fraction;
+			// initialize fraction
+			if(circle_fraction){
+				this.the_fraction = circle_fraction;
 			} else {
-				this.circle_fraction = new CircleFraction();
+				this.the_fraction = new CircleFraction(120, 0, 1);
 			}
-			
+				
 			if (stage) {
 				init();
 			} else {
@@ -43,36 +46,18 @@ package com.fractionviewer
 			removeEventListener(Event.ADDED_TO_STAGE, init);
 			// entry point
 			
-			//var circle_fraction:CircleFraction = new CircleFraction(90,0,4);
-			trace(circle_fraction.radius);
-			circle_fraction.x = stage.stageWidth / 2 - (circle_fraction.radius);
-			circle_fraction.y = stage.stageHeight / 3 - (circle_fraction.radius) - 2; // hard coded position
-			circle_fraction.buttonMode = true;
-			circle_fraction.addEventListener(
-				MouseEvent.CLICK,
-				onCircleClicked);
-			addChild(circle_fraction);	
-			
+			// fraction placement
+			the_fraction.x = stage.stageWidth / 2 - (the_fraction.radius);
+			the_fraction.y = stage.stageHeight / 3 - (the_fraction.radius) - 2; // hard coded position
+			the_fraction.buttonMode = true;
+			the_fraction.addEventListener(MouseEvent.CLICK, onCircleClicked);
+			addChild(the_fraction);
+				
+			// navigation buttons
 			var oneThirdStageWidth:Number = stage.stageWidth / 3;
 			var oneThirdStageHeight:Number = stage.stageHeight / 3;
 				
-			var display_penyebut:TextField = new TextField();
-			//display_penyebut.border = true;
-			display_penyebut.autoSize = TextFieldAutoSize.CENTER;
-			display_penyebut.x = stage.stageWidth / 2;
-			display_penyebut.y = 2 * oneThirdStageHeight - oneThirdStageHeight/3;
-			display_penyebut.defaultTextFormat = new TextFormat("Verdana", 72, 0x000000, true);
-			display_penyebut.text = circle_fraction.pembilang + "/" + circle_fraction.penyebut;
-			addChild(display_penyebut);
-			
-			BindingUtils.bindSetter(
-				function(valueReceived:int):void {
-					display_penyebut.text = valueReceived + "/" + circle_fraction.penyebut;
-				},
-				circle_fraction,
-				"pembilang");
-				
-			var next_button:Sprite = createButton("Test");
+			var next_button:Sprite = createButton("Next");
 			next_button.x = 2 * oneThirdStageWidth;
 			next_button.y = 2 * oneThirdStageHeight + oneThirdStageHeight/2;
 			addChild(next_button);
@@ -82,35 +67,64 @@ package com.fractionviewer
 			back_button.y = 2 * oneThirdStageHeight + oneThirdStageHeight/2;
 			addChild(back_button);
 			
+			var display_penyebut:TextField = new TextField();
+			//display_penyebut.border = true;
+			display_penyebut.autoSize = TextFieldAutoSize.CENTER;
+			display_penyebut.x = stage.stageWidth / 2;
+			display_penyebut.y = 2 * oneThirdStageHeight - oneThirdStageHeight/3;
+			display_penyebut.defaultTextFormat = new TextFormat("Verdana", 72, 0x000000, true);
+			addChild(display_penyebut);
+			
+			// bindings
+			BindingUtils.bindSetter(
+				function(valueReceived:int):void {
+					display_penyebut.text = valueReceived + " bagian";
+				},
+				the_fraction,
+				"penyebut");
+				
+			// buttons behaviour
 			next_button.addEventListener(MouseEvent.MOUSE_DOWN, function(e:MouseEvent):void {
-				dispatchEvent(new Event(TEST_CLICKED));
+				dispatchEvent(new Event(NEXT_CLICKED));
 			});
 			
 			back_button.addEventListener(MouseEvent.MOUSE_DOWN, function(e:MouseEvent):void {
-				dispatchEvent(new Event(BACK_CLICKED));
+				TweenLite.to(display_penyebut, 0.5, { alpha: 0 } );
+				TweenLite.to(back_button, 0.5, { alpha: 0 } );
+				TweenLite.to(next_button, 0.5, { alpha: 0 } );
+				TweenLite.to(the_fraction, 0.5, 
+					{ 
+						x: stage.stageWidth / 3 - (the_fraction.width / 2),
+						onComplete: function():void {
+							dispatchEvent(new Event(BACK_CLICKED));
+						}
+					});
+			});
+			
+			// screen behaviour
+			addEventListener(Event.REMOVED_FROM_STAGE, function (e:Event):void {
+				the_fraction.removeEventListener(MouseEvent.CLICK, onCircleClicked);
 			});
 			
 			addEventListener(Event.ADDED_TO_STAGE, function(e:Event):void {
-				trace("contains circle_fraction: " + contains(circle_fraction));
-				if ( !contains(circle_fraction) ) {
-					addChild(circle_fraction);
+				if ( !contains(the_fraction) ) {
+					addChild(the_fraction);
 				}
-				display_penyebut.text = circle_fraction.pembilang + "/" + circle_fraction.penyebut;
-				circle_fraction.addEventListener(MouseEvent.CLICK, onCircleClicked);
-			});
-			
-			addEventListener(Event.REMOVED_FROM_STAGE, function(e:Event):void {
-				circle_fraction.removeEventListener(MouseEvent.CLICK, onCircleClicked);
+				the_fraction.x = stage.stageWidth / 2 - (the_fraction.radius);
+				the_fraction.y = stage.stageHeight / 3 - (the_fraction.radius) - 2;
+				the_fraction.addEventListener(MouseEvent.CLICK, onCircleClicked);
+				display_penyebut.alpha = 1;
+				back_button.alpha = 1;
+				next_button.alpha = 1;
 			});
 		}
 		
 		private function onCircleClicked(e:MouseEvent):void {
 			trace("ouch");
-			circle_fraction.pembilang += 1;
-			trace("pembilang: " + circle_fraction.pembilang);
+			the_fraction.penyebut += 1;
 		}
 		
-		private function createButton(text:String, width:int = 150, height:int = 50):Sprite 
+		protected function createButton(text:String, width:int = 150, height:int = 50):Sprite 
 		{
 			var rect_width:int = width;
 			var rect_height:int = height;
@@ -145,6 +159,12 @@ package com.fractionviewer
 			button_sprite.addChild(label);
 			
 			return button_sprite;
+		}
+		
+		public static function test(the_stage:Stage):void {
+			var screen:PenyebutScreen = new PenyebutScreen();
+			
+			the_stage.addChild(screen);
 		}
 	}
 

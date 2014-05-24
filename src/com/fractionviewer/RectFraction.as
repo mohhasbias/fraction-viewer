@@ -1,6 +1,7 @@
 package com.fractionviewer 
 {
 	import flash.display.Sprite;
+	import flash.display.Stage;
 	import flash.events.Event;
 	import flash.display.Shape;
 	
@@ -125,8 +126,11 @@ package com.fractionviewer
 			_rect_height = value;
 		}
 		
-		public static function test() {
+		public static function test(the_stage:Stage):void {
 			import flash.events.MouseEvent;
+			
+			//trace("stage: " + stage);
+			var dummy_sprite:Sprite = new Sprite();
 			
 			var circle_radius:Number = 120;
 			
@@ -139,7 +143,7 @@ package com.fractionviewer
 			for (var i:int = 0; i < rects.length; i++) {
 				rects[i].x = (i % 3) * (rects[i].rect_width + 15);
 				rects[i].y = Math.floor(i / 3) * (rects[i].rect_height + 15);
-				stage.addChild(rects[i]);
+				the_stage.addChild(rects[i]);
 				
 				rects[i].buttonMode = true;
 				rects[i].addEventListener(MouseEvent.CLICK, function(e:MouseEvent):void {
