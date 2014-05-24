@@ -48,6 +48,12 @@ package com.fractionviewer
 		private function onEnterFrame(e:Event):void {
 			//trace("width, height: " + rect_width + "x" + rect_height);
 			
+			// remove all child
+			while (numChildren > 0)
+			{
+				removeChildAt(0);
+			}
+			
 			// draw placeholder
 			var rect:Shape = new Shape();
 			rect.graphics.lineStyle(LINE_THICKNESS_OUTER, STROKE_COLOR_OUTER);
@@ -117,6 +123,31 @@ package com.fractionviewer
 		public function set rect_height(value:Number):void 
 		{
 			_rect_height = value;
+		}
+		
+		public static function test() {
+			import flash.events.MouseEvent;
+			
+			var circle_radius:Number = 120;
+			
+			var rects:Array = new Array();
+			rects.push(new RectFraction(2.25 * circle_radius, 1.75 * circle_radius, 1, 2));
+			rects.push(new RectFraction(2.25 * circle_radius, 1.75 * circle_radius, 2, 3));
+			rects.push(new RectFraction(2.25 * circle_radius, 1.75 * circle_radius, 3, 4));
+			rects.push(new RectFraction(2.25 * circle_radius, 1.75 * circle_radius, 5, 6));
+			
+			for (var i:int = 0; i < rects.length; i++) {
+				rects[i].x = (i % 3) * (rects[i].rect_width + 15);
+				rects[i].y = Math.floor(i / 3) * (rects[i].rect_height + 15);
+				stage.addChild(rects[i]);
+				
+				rects[i].buttonMode = true;
+				rects[i].addEventListener(MouseEvent.CLICK, function(e:MouseEvent):void {
+					var rect:RectFraction = e.currentTarget as RectFraction;
+					
+					rect.penyebut += 1;
+				});
+			}
 		}
 	}
 
