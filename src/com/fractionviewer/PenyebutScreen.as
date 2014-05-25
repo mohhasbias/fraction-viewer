@@ -163,8 +163,20 @@ package com.fractionviewer
 			return button_sprite;
 		}
 		
-		public static function test(the_stage:Stage):void {
-			var screen:PenyebutScreen = new PenyebutScreen();
+		public static function test(the_stage:Stage, the_fraction:ShapeFraction = null):void {
+			var screen:PenyebutScreen;
+			
+			var radius:Number = 120;
+			
+			if (the_fraction) {
+				screen = new PenyebutScreen(the_fraction);
+			} else {
+				if ( Math.floor(Math.random() * 2) == 1) {
+					screen = new PenyebutScreen(new RectFraction(2.25 * radius, 1.75 * radius, 0, 1));
+				} else {
+					screen = new PenyebutScreen(new CircleFraction(radius, 0, 1));
+				}
+			}
 			
 			the_stage.addChild(screen);
 		}

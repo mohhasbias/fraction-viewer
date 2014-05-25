@@ -23,6 +23,7 @@ package com.fractionviewer
 		private const SHAPE_SELECT_SCREEN:int = 0;
 		private const CIRCLE_PENYEBUT_SCREEN:int = 1;
 		private const CIRCLE_PEMBILANG_SCREEN:int = 2;
+		private const RECT_PENYEBUT_SCREEN:int = 3;
 		
 		public function Main()
 		{
