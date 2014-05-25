@@ -9,7 +9,7 @@ package com.fractionviewer
 	 * ...
 	 * @author Moh Hasbi Assidiqi
 	 */
-	public class RectFraction extends Sprite 
+	public class RectFraction extends ShapeFraction 
 	{	
 		private const FILL_COLOR_EMPTY:int = 0xF7F7F7;
 		private const FILL_COLOR_SELECTED:int = 0x23ED36;
@@ -86,22 +86,22 @@ package com.fractionviewer
 			}
 		}
 		
-		public function get pembilang():Number 
+		override public function get pembilang():int 
 		{
 			return _pembilang;
 		}
 		
-		public function set pembilang(value:Number):void 
+		override public function set pembilang(value:int):void 
 		{
 			_pembilang = value;
 		}
 		
-		public function get penyebut():Number 
+		override public function get penyebut():int 
 		{
 			return _penyebut;
 		}
 		
-		public function set penyebut(value:Number):void 
+		override public function set penyebut(value:int):void 
 		{
 			_penyebut = value;
 		}
@@ -124,6 +124,14 @@ package com.fractionviewer
 		public function set rect_height(value:Number):void 
 		{
 			_rect_height = value;
+		}
+		
+		override public function get view_width():int {
+			return 2 * rect_width / 2.25;
+		}
+		
+		override public function get view_height():int {
+			return 2 * rect_height / 1.75;
 		}
 		
 		public static function test(the_stage:Stage):void {

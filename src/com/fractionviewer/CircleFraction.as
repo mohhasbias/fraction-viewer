@@ -187,12 +187,12 @@ package com.fractionviewer
 		}
 		
 		[Bindable]
-		public function get pembilang():int 
+		override public function get pembilang():int 
 		{
 			return _pembilang;
 		}
 		
-		public function set pembilang(value:int):void 
+		override public function set pembilang(value:int):void 
 		{
 			if( value >= 0 && value <= penyebut){
 				_pembilang = value;
@@ -201,12 +201,12 @@ package com.fractionviewer
 		}
 		
 		[Bindable]
-		public function get penyebut():int 
+		override public function get penyebut():int 
 		{
 			return _penyebut;
 		}
 		
-		public function set penyebut(value:int):void 
+		override public function set penyebut(value:int):void 
 		{
 			_penyebut = value;
 			dispatchEvent(new Event(VALUE_CHANGED));

@@ -22,17 +22,19 @@ package com.fractionviewer
 		public static const NEXT_CLICKED:String = "Next Clicked";
 		public static const BACK_CLICKED:String = "Back Clicked";
 		
-		private var the_fraction:CircleFraction;
+		private var the_fraction:ShapeFraction;
 		
-		public function PenyebutScreen(circle_fraction:CircleFraction = null) 
+		public function PenyebutScreen(the_fraction:ShapeFraction = null) 
 		{
 			super();
 			
 			// initialize fraction
-			if(circle_fraction){
-				this.the_fraction = circle_fraction;
+			if(the_fraction){
+				this.the_fraction = the_fraction;
 			} else {
-				this.the_fraction = new CircleFraction(120, 0, 1);
+				//this.the_fraction = new CircleFraction(120, 0, 1);
+				this.the_fraction = new RectFraction(2.25 * 120, 1.75 * 120, 0, 1);
+				trace("width x height: " + this.the_fraction.view_width + "x" + this.the_fraction.view_height);
 			}
 				
 			if (stage) {
@@ -110,8 +112,8 @@ package com.fractionviewer
 				if ( !contains(the_fraction) ) {
 					addChild(the_fraction);
 				}
-				the_fraction.x = stage.stageWidth / 2 - (the_fraction.radius);
-				the_fraction.y = stage.stageHeight / 3 - (the_fraction.radius) - 2;
+				the_fraction.x = stage.stageWidth / 2 - (the_fraction.view_width/2);
+				the_fraction.y = stage.stageHeight / 3 - (the_fraction.view_height/2) - 2;
 				the_fraction.addEventListener(MouseEvent.CLICK, onShapeClicked);
 				display_penyebut.alpha = 1;
 				back_button.alpha = 1;

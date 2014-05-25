@@ -22,6 +22,24 @@ package com.fractionviewer
 		public function get view_height():int {
 			return 0;
 		}
+		
+		public function get penyebut():int 
+		{
+			return 0;
+		}
+		
+		public function set penyebut(value:int):void {
+			
+		}
+		
+		public function get pembilang():int 
+		{
+			return 0;
+		}
+		
+		public function set pembilang(value:int):void {
+			
+		}
 	}
 
 }
