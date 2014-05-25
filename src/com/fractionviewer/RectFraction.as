@@ -96,6 +96,7 @@ package com.fractionviewer
 			_pembilang = value;
 		}
 		
+		[Bindable]
 		override public function get penyebut():int 
 		{
 			return _penyebut;

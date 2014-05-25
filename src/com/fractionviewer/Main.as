@@ -41,22 +41,26 @@ package com.fractionviewer
 			// initialize screens
 			var circle_radius:Number = 120;
 			var circle_fraction:CircleFraction = new CircleFraction(circle_radius, 0, 1);
+			var rect_fraction:RectFraction = new RectFraction(2.25 * circle_radius, 1.75 * circle_radius, 0, 1);
 			screen_list = new Array();
 			var screen1:ShapeChooserScreen = createAndSetupShapeChooserScreen();
 			var screen2:CirclePenyebutScreen = createAndSetupCirclePenyebutScreen(circle_fraction);
 			var screen3:CirclePembilangScreen = createAndSetupCirclePembilangScreen(circle_fraction);
+			var screen4:PenyebutScreen = createAndSetupPenyebutScreen(rect_fraction);
 			
 			screen_list[SHAPE_SELECT_SCREEN] = screen1; 
 			screen_list[CIRCLE_PENYEBUT_SCREEN] = screen2; 
 			screen_list[CIRCLE_PEMBILANG_SCREEN] = screen3;
+			screen_list[RECT_PENYEBUT_SCREEN] = screen4;
 			
 			// activate first screen
 			//active_screen = screen_list[SHAPE_SELECT_SCREEN];
 			//active_screen = screen_list[CIRCLE_PENYEBUT_SCREEN];
 			//active_screen = screen_list[CIRCLE_PEMBILANG_SCREEN];
+			active_screen = screen_list[RECT_PENYEBUT_SCREEN];
 			
 			//RectFraction.test(stage);
-			PenyebutScreen.test(stage);
+			//PenyebutScreen.test(stage);
 		}
 		
 		private function createAndSetupShapeChooserScreen():ShapeChooserScreen {
@@ -87,6 +91,22 @@ package com.fractionviewer
 			screen.addEventListener(CirclePenyebutScreen.BACK_CLICKED, function (e:Event):void {
 				trace("back..");
 				active_screen = screen_list[SHAPE_SELECT_SCREEN];
+			});
+			
+			return screen;
+		}
+		
+		private function createAndSetupPenyebutScreen(rect_fraction:RectFraction):PenyebutScreen {
+			var screen:PenyebutScreen = new PenyebutScreen(rect_fraction);
+			
+			screen.addEventListener(PenyebutScreen.NEXT_CLICKED, function (e:Event):void {
+				trace("next...");
+				//active_screen = screen_list[CIRCLE_PEMBILANG_SCREEN];
+			});
+			
+			screen.addEventListener(PenyebutScreen.BACK_CLICKED, function (e:Event):void {
+				trace("back..");
+				//active_screen = screen_list[SHAPE_SELECT_SCREEN];
 			});
 			
 			return screen;
