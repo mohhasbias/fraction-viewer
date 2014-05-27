@@ -38,6 +38,7 @@
     </source-path>
     <library-path append="true">
       <path-element>C:\Users\rumaisyah\Documents\p3ai\MengenalPecahan_2\FractionViewerAS3\libs\greensock.swc</path-element>
+      <path-element>C:\Users\rumaisyah\Documents\p3ai\MengenalPecahan_2\FractionViewerAS3\libs\MathMLFormulaLibProject.swc</path-element>
     </library-path>
   </compiler>
   <file-specs>

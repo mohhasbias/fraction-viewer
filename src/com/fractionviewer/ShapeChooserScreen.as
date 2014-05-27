@@ -49,7 +49,7 @@ package com.fractionviewer
 			_circle_button.y = stage.stageHeight/3 - (circle_button.height/2);
 		
 			addChild(circle_button);
-			circle_button.addEventListener(MouseEvent.MOUSE_DOWN, onCircleClicked);
+			circle_button.addEventListener(MouseEvent.MOUSE_DOWN, onShapeClicked);
 			
 			
 			_rect_button = createRectButton(2.25*radius, 1.75*radius);
@@ -57,43 +57,39 @@ package com.fractionviewer
 			_rect_button.y = stage.stageHeight / 3 - (rect_button.height / 2);// + (circle_button.height - rect_button.height) / 2;
 			
 			addChild(rect_button);
-			rect_button.addEventListener(MouseEvent.MOUSE_DOWN, onRectClicked);
+			rect_button.addEventListener(MouseEvent.MOUSE_DOWN, onShapeClicked);
 		}
 		
-		private function onCircleClicked(e:MouseEvent):void {
-			trace(circle_button);
+		private function onShapeClicked(e:MouseEvent):void {
+			var the_button:SimpleButton = e.currentTarget as SimpleButton;
+			var the_other_button = (the_button.name == circle_button.name)? rect_button : circle_button;
+			trace(the_button);
 			var animation_duration:Number = 0.5;
-			swapChildren(circle_button, rect_button);
-			circle_button.enabled = false;
-			circle_button.overState = circle_button.downState;
-			TweenLite.to(rect_button, animation_duration, { alpha: 0 } );
+			swapChildren(the_button, the_other_button);
+			the_button.enabled = false;
+			the_button.overState = the_button.downState;
+			TweenLite.to(the_other_button, animation_duration, { alpha: 0 } );
 			TweenLite.to(
-				circle_button, animation_duration, 
+				the_button, animation_duration, 
 				{
-					x: stage.stageWidth / 2 - circle_button.width / 2, 
-					y: circle_button.y,
+					x: stage.stageWidth / 2 - the_button.width / 2, 
+					y: the_button.y,
 					onComplete: function():void {
 						trace("completed");
-						circle_button.x = stage.stageWidth / 3 - (circle_button.width / 2);
-						circle_button.enabled = true;
-						circle_button.overState = circle_button.hitTestState;
-						rect_button.alpha = 1;
-						dispatchEvent(new Event(CIRCLE_CLICKED));
-						}} );
-		}
-		
-		private function onRectClicked(e:MouseEvent):void {
-			rect_button.enabled = false;
-			rect_button.overState = rect_button.downState;
-			TweenLite.to(circle_button, 0.5, { alpha: 0 } );
-			TweenLite.to(
-				rect_button, 0.5, 
-				{
-					x: stage.stageWidth / 2 - rect_button.width / 2, 
-					y: rect_button.y,
-					onComplete: function():void {
-						dispatchEvent(new Event(RECT_CLICKED));
-						trace("completed")}} );
+						if( the_button.name == circle_button.name){
+							the_button.x = stage.stageWidth / 3 - (the_button.width / 2);
+						} else if (the_button.name == rect_button.name) {
+							the_button.x = stage.stageWidth*2 / 3 - (the_button.width / 2);
+						}
+						the_button.enabled = true;
+						the_button.overState = the_button.hitTestState;
+						the_other_button.alpha = 1;
+						if ( the_button.name == circle_button.name) {
+							dispatchEvent(new Event(CIRCLE_CLICKED));
+						} else if (the_button.name == rect_button.name){
+							dispatchEvent(new Event(RECT_CLICKED));
+						}
+					}} );
 		}
 		
 		private function createCircleButton(radius:int = 90):SimpleButton {

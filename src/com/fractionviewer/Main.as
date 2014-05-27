@@ -1,5 +1,6 @@
 package com.fractionviewer
 {
+	import adobe.utils.CustomActions;
 	import com.greensock.TimelineLite;
 	import flash.display.Shape;
 	import flash.display.Sprite;
@@ -43,21 +44,21 @@ package com.fractionviewer
 			var circle_fraction:CircleFraction = new CircleFraction(circle_radius, 0, 1);
 			var rect_fraction:RectFraction = new RectFraction(2.25 * circle_radius, 1.75 * circle_radius, 0, 1);
 			screen_list = new Array();
-			var screen1:ShapeChooserScreen = createAndSetupShapeChooserScreen();
-			var screen2:CirclePenyebutScreen = createAndSetupCirclePenyebutScreen(circle_fraction);
-			var screen3:CirclePembilangScreen = createAndSetupCirclePembilangScreen(circle_fraction);
-			var screen4:PenyebutScreen = createAndSetupPenyebutScreen(rect_fraction);
+			//var screen1:ShapeChooserScreen = createAndSetupShapeChooserScreen();
+			//var screen2:CirclePenyebutScreen = createAndSetupCirclePenyebutScreen(circle_fraction);
+			//var screen3:CirclePembilangScreen = createAndSetupCirclePembilangScreen(circle_fraction);
+			//var screen4:PenyebutScreen = createAndSetupPenyebutScreen(rect_fraction);
 			
-			screen_list[SHAPE_SELECT_SCREEN] = screen1; 
-			screen_list[CIRCLE_PENYEBUT_SCREEN] = screen2; 
-			screen_list[CIRCLE_PEMBILANG_SCREEN] = screen3;
-			screen_list[RECT_PENYEBUT_SCREEN] = screen4;
+			screen_list[SHAPE_SELECT_SCREEN] = createAndSetupShapeChooserScreen(); 
+			screen_list[CIRCLE_PENYEBUT_SCREEN] = createAndSetupPenyebutScreen(circle_fraction); 
+			screen_list[CIRCLE_PEMBILANG_SCREEN] = createAndSetupCirclePembilangScreen(circle_fraction);
+			screen_list[RECT_PENYEBUT_SCREEN] = createAndSetupPenyebutScreen(rect_fraction);
 			
 			// activate first screen
-			//active_screen = screen_list[SHAPE_SELECT_SCREEN];
+			active_screen = screen_list[SHAPE_SELECT_SCREEN];
 			//active_screen = screen_list[CIRCLE_PENYEBUT_SCREEN];
 			//active_screen = screen_list[CIRCLE_PEMBILANG_SCREEN];
-			active_screen = screen_list[RECT_PENYEBUT_SCREEN];
+			//active_screen = screen_list[RECT_PENYEBUT_SCREEN];
 			
 			//RectFraction.test(stage);
 			//PenyebutScreen.test(stage);
@@ -74,7 +75,7 @@ package com.fractionviewer
 			screen.addEventListener(ShapeChooserScreen.RECT_CLICKED,
 				function(e:Event):void {
 					trace("rect selected");
-					active_screen = null;
+					active_screen = screen_list[RECT_PENYEBUT_SCREEN];
 				});
 				
 			return screen;
@@ -101,12 +102,17 @@ package com.fractionviewer
 			
 			screen.addEventListener(PenyebutScreen.NEXT_CLICKED, function (e:Event):void {
 				trace("next...");
-				active_screen = screen_list[CIRCLE_PEMBILANG_SCREEN];
+				if(the_fraction instanceof CircleFraction){
+					active_screen = screen_list[CIRCLE_PEMBILANG_SCREEN];
+				} else if (the_fraction instanceof RectFraction) {
+					//active_screen = screen_list[RECT_PEMBILANG_SCREEN];
+				}
 			});
 			
 			screen.addEventListener(PenyebutScreen.BACK_CLICKED, function (e:Event):void {
 				trace("back..");
-				//active_screen = screen_list[SHAPE_SELECT_SCREEN];
+				active_screen = screen_list[SHAPE_SELECT_SCREEN];
+				//active_screen = null;
 			});
 			
 			return screen;
