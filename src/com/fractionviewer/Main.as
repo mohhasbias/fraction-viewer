@@ -96,12 +96,12 @@ package com.fractionviewer
 			return screen;
 		}
 		
-		private function createAndSetupPenyebutScreen(rect_fraction:RectFraction):PenyebutScreen {
-			var screen:PenyebutScreen = new PenyebutScreen(rect_fraction);
+		private function createAndSetupPenyebutScreen(the_fraction:ShapeFraction):PenyebutScreen {
+			var screen:PenyebutScreen = new PenyebutScreen(the_fraction);
 			
 			screen.addEventListener(PenyebutScreen.NEXT_CLICKED, function (e:Event):void {
 				trace("next...");
-				//active_screen = screen_list[CIRCLE_PEMBILANG_SCREEN];
+				active_screen = screen_list[CIRCLE_PEMBILANG_SCREEN];
 			});
 			
 			screen.addEventListener(PenyebutScreen.BACK_CLICKED, function (e:Event):void {
