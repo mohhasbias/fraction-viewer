@@ -128,11 +128,11 @@ package com.fractionviewer
 		}
 		
 		override public function get view_width():int {
-			return 2 * rect_width / 2.25;
+			return rect_width;// 2 * rect_width / 2.25;
 		}
 		
 		override public function get view_height():int {
-			return 2 * rect_height / 1.75;
+			return rect_height;// / 1.75;
 		}
 		
 		public static function test(the_stage:Stage):void {

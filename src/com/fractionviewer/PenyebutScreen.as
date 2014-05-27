@@ -49,8 +49,8 @@ package com.fractionviewer
 			// entry point
 			
 			// fraction placement
-			the_fraction.x = stage.stageWidth / 2 - (the_fraction.view_width/2);
-			the_fraction.y = stage.stageHeight / 3 - (the_fraction.view_height/2) - 2; // hard coded position
+			the_fraction.x = stage.stageWidth / 2 - (the_fraction.view_width/2) - 3;
+			the_fraction.y = stage.stageHeight / 3 - (the_fraction.view_height / 2) - 3; // hard coded position
 			the_fraction.buttonMode = true;
 			the_fraction.addEventListener(MouseEvent.CLICK, onShapeClicked);
 			addChild(the_fraction);
@@ -94,13 +94,23 @@ package com.fractionviewer
 				TweenLite.to(display_penyebut, 0.5, { alpha: 0 } );
 				TweenLite.to(back_button, 0.5, { alpha: 0 } );
 				TweenLite.to(next_button, 0.5, { alpha: 0 } );
-				TweenLite.to(the_fraction, 0.5, 
-					{ 
-						x: stage.stageWidth / 3 - (the_fraction.width / 2),
-						onComplete: function():void {
-							dispatchEvent(new Event(BACK_CLICKED));
-						}
-					});
+				if(the_fraction instanceof CircleFraction){
+					TweenLite.to(the_fraction, 0.5, 
+						{ 
+							x: stage.stageWidth / 3 - (the_fraction.width / 2),
+							onComplete: function():void {
+								dispatchEvent(new Event(BACK_CLICKED));
+							}
+						});
+				} else if(the_fraction instanceof RectFraction){
+					TweenLite.to(the_fraction, 0.5, 
+						{ 
+							x: stage.stageWidth*2 / 3 - (the_fraction.width / 2),
+							onComplete: function():void {
+								dispatchEvent(new Event(BACK_CLICKED));
+							}
+						});
+				}
 			});
 			
 			// screen behaviour
