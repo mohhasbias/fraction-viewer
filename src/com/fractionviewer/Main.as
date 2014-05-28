@@ -84,22 +84,6 @@ package com.fractionviewer
 			return screen;
 		}
 		
-		private function createAndSetupCirclePenyebutScreen(circle_fraction:CircleFraction):CirclePenyebutScreen {
-			var screen:CirclePenyebutScreen = new CirclePenyebutScreen(circle_fraction);
-			
-			screen.addEventListener(CirclePenyebutScreen.NEXT_CLICKED, function (e:Event):void {
-				trace("next...");
-				active_screen = screen_list[CIRCLE_PEMBILANG_SCREEN];
-			});
-			
-			screen.addEventListener(CirclePenyebutScreen.BACK_CLICKED, function (e:Event):void {
-				trace("back..");
-				active_screen = screen_list[SHAPE_SELECT_SCREEN];
-			});
-			
-			return screen;
-		}
-		
 		private function createAndSetupPenyebutScreen(the_fraction:ShapeFraction):PenyebutScreen {
 			var screen:PenyebutScreen = new PenyebutScreen(the_fraction);
 			

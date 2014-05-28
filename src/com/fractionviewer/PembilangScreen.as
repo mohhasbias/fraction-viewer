@@ -10,6 +10,7 @@ package com.fractionviewer
 	import flash.text.TextFormatAlign;
 	import mx.binding.utils.BindingUtils;
 	import flash.display.SimpleButton;
+	import flash.display.CapsStyle;
 	
 	/**
 	 * ...
@@ -68,8 +69,8 @@ package com.fractionviewer
 			
 			var separator:Shape = new Shape();
 			separator.graphics.lineStyle(10, 0x000000);
-			separator.graphics.moveTo(display_penyebut.x, display_penyebut.y + display_penyebut.height/2);
-			separator.graphics.lineTo(display_penyebut.x + display_penyebut.textWidth, display_penyebut.y + display_penyebut.height/2);
+			//separator.graphics.moveTo(display_penyebut.x, display_penyebut.y + display_penyebut.height/2);
+			//separator.graphics.lineTo(display_penyebut.x + display_penyebut.textWidth, display_penyebut.y + display_penyebut.height/2);
 			addChild(separator);
 			
 			BindingUtils.bindSetter(
@@ -77,9 +78,9 @@ package com.fractionviewer
 					display_penyebut.text = valueReceived + "\n" + the_fraction.penyebut;
 					trace(display_penyebut.textWidth);
 					separator.graphics.clear();
-					separator.graphics.lineStyle(10, 0x000000);
-					separator.graphics.moveTo(display_penyebut.x, display_penyebut.y + display_penyebut.height/2);
-					separator.graphics.lineTo(display_penyebut.x + display_penyebut.textWidth, display_penyebut.y + display_penyebut.height/2);
+					separator.graphics.lineStyle(10, 0x000000, 1, true, "normal", CapsStyle.SQUARE);
+					separator.graphics.moveTo(display_penyebut.x, display_penyebut.y + 0.52 * display_penyebut.height);
+					separator.graphics.lineTo(display_penyebut.x + display_penyebut.textWidth, display_penyebut.y + 0.52 * display_penyebut.height);
 				},
 				the_fraction,
 				"pembilang");
