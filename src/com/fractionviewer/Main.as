@@ -102,9 +102,9 @@ package com.fractionviewer
 			
 			screen.addEventListener(PenyebutScreen.NEXT_CLICKED, function (e:Event):void {
 				trace("next...");
-				if(the_fraction instanceof CircleFraction){
+				if(the_fraction is CircleFraction){
 					active_screen = screen_list[CIRCLE_PEMBILANG_SCREEN];
-				} else if (the_fraction instanceof RectFraction) {
+				} else if (the_fraction is RectFraction) {
 					//active_screen = screen_list[RECT_PEMBILANG_SCREEN];
 				}
 			});

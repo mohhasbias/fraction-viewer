@@ -94,7 +94,7 @@ package com.fractionviewer
 				TweenLite.to(display_penyebut, 0.5, { alpha: 0 } );
 				TweenLite.to(back_button, 0.5, { alpha: 0 } );
 				TweenLite.to(next_button, 0.5, { alpha: 0 } );
-				if(the_fraction instanceof CircleFraction){
+				if(the_fraction is CircleFraction){
 					TweenLite.to(the_fraction, 0.5, 
 						{ 
 							x: stage.stageWidth / 3 - (the_fraction.width / 2),
@@ -102,7 +102,7 @@ package com.fractionviewer
 								dispatchEvent(new Event(BACK_CLICKED));
 							}
 						});
-				} else if(the_fraction instanceof RectFraction){
+				} else if(the_fraction is RectFraction){
 					TweenLite.to(the_fraction, 0.5, 
 						{ 
 							x: stage.stageWidth*2 / 3 - (the_fraction.width / 2),

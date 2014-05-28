@@ -45,8 +45,8 @@ package com.fractionviewer
 			
 			//var circle_fraction:CircleFraction = new CircleFraction(90,0,4);
 			trace(circle_fraction.radius);
-			circle_fraction.x = stage.stageWidth / 2 - (circle_fraction.radius);
-			circle_fraction.y = stage.stageHeight / 3 - (circle_fraction.radius) - 2; // hard coded position
+			circle_fraction.x = stage.stageWidth / 2 - (circle_fraction.radius) - 3;
+			circle_fraction.y = stage.stageHeight / 3 - (circle_fraction.radius) - 3; // hard coded position
 			circle_fraction.buttonMode = true;
 			circle_fraction.addEventListener(
 				MouseEvent.CLICK,
@@ -63,12 +63,23 @@ package com.fractionviewer
 			display_penyebut.y = 2 * oneThirdStageHeight - oneThirdStageHeight/3;
 			display_penyebut.defaultTextFormat = 
 				new TextFormat("Verdana", 72, 0x000000, true, null, null, null, null, TextFormatAlign.CENTER);
-			display_penyebut.text = circle_fraction.pembilang + "/" + circle_fraction.penyebut;
+			display_penyebut.text = circle_fraction.pembilang + "\n" + circle_fraction.penyebut;
 			addChild(display_penyebut);
+			
+			var separator:Shape = new Shape();
+			separator.graphics.lineStyle(10, 0x000000);
+			separator.graphics.moveTo(display_penyebut.x, display_penyebut.y + display_penyebut.height/2);
+			separator.graphics.lineTo(display_penyebut.x + display_penyebut.textWidth, display_penyebut.y + display_penyebut.height/2);
+			addChild(separator);
 			
 			BindingUtils.bindSetter(
 				function(valueReceived:int):void {
-					display_penyebut.text = valueReceived + "/" + circle_fraction.penyebut;
+					display_penyebut.text = valueReceived + "\n" + circle_fraction.penyebut;
+					trace(display_penyebut.textWidth);
+					separator.graphics.clear();
+					separator.graphics.lineStyle(10, 0x000000);
+					separator.graphics.moveTo(display_penyebut.x, display_penyebut.y + display_penyebut.height/2);
+					separator.graphics.lineTo(display_penyebut.x + display_penyebut.textWidth, display_penyebut.y + display_penyebut.height/2);
 				},
 				circle_fraction,
 				"pembilang");
@@ -96,7 +107,7 @@ package com.fractionviewer
 				if ( !contains(circle_fraction) ) {
 					addChild(circle_fraction);
 				}
-				display_penyebut.text = circle_fraction.pembilang + "/" + circle_fraction.penyebut;
+				display_penyebut.text = circle_fraction.pembilang + "\n" + circle_fraction.penyebut;
 				circle_fraction.addEventListener(MouseEvent.CLICK, onCircleClicked);
 			});
 			

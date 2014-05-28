@@ -62,7 +62,7 @@ package com.fractionviewer
 		
 		private function onShapeClicked(e:MouseEvent):void {
 			var the_button:SimpleButton = e.currentTarget as SimpleButton;
-			var the_other_button = (the_button.name == circle_button.name)? rect_button : circle_button;
+			var the_other_button:SimpleButton = (the_button.name == circle_button.name)? rect_button : circle_button;
 			trace(the_button);
 			var animation_duration:Number = 0.5;
 			swapChildren(the_button, the_other_button);
