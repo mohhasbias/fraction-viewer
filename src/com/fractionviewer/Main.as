@@ -25,6 +25,7 @@ package com.fractionviewer
 		private const CIRCLE_PENYEBUT_SCREEN:int = 1;
 		private const CIRCLE_PEMBILANG_SCREEN:int = 2;
 		private const RECT_PENYEBUT_SCREEN:int = 3;
+		private const RECT_PEMBILANG_SCREEN:int = 4;
 		
 		public function Main()
 		{
@@ -51,14 +52,16 @@ package com.fractionviewer
 			
 			screen_list[SHAPE_SELECT_SCREEN] = createAndSetupShapeChooserScreen(); 
 			screen_list[CIRCLE_PENYEBUT_SCREEN] = createAndSetupPenyebutScreen(circle_fraction); 
-			screen_list[CIRCLE_PEMBILANG_SCREEN] = createAndSetupCirclePembilangScreen(circle_fraction);
+			screen_list[CIRCLE_PEMBILANG_SCREEN] = createAndSetupPembilangScreen(circle_fraction);
 			screen_list[RECT_PENYEBUT_SCREEN] = createAndSetupPenyebutScreen(rect_fraction);
+			screen_list[RECT_PEMBILANG_SCREEN] = createAndSetupPembilangScreen(rect_fraction);
 			
 			// activate first screen
 			active_screen = screen_list[SHAPE_SELECT_SCREEN];
 			//active_screen = screen_list[CIRCLE_PENYEBUT_SCREEN];
 			//active_screen = screen_list[CIRCLE_PEMBILANG_SCREEN];
 			//active_screen = screen_list[RECT_PENYEBUT_SCREEN];
+			//active_screen = screen_list[RECT_PEMBILANG_SCREEN];
 			
 			//RectFraction.test(stage);
 			//PenyebutScreen.test(stage);
@@ -105,7 +108,7 @@ package com.fractionviewer
 				if(the_fraction is CircleFraction){
 					active_screen = screen_list[CIRCLE_PEMBILANG_SCREEN];
 				} else if (the_fraction is RectFraction) {
-					//active_screen = screen_list[RECT_PEMBILANG_SCREEN];
+					active_screen = screen_list[RECT_PEMBILANG_SCREEN];
 				}
 			});
 			
@@ -118,17 +121,21 @@ package com.fractionviewer
 			return screen;
 		}
 		
-		private function createAndSetupCirclePembilangScreen(circle_fraction:CircleFraction):CirclePembilangScreen {
-			var screen:CirclePembilangScreen = new CirclePembilangScreen(circle_fraction);
+		private function createAndSetupPembilangScreen(the_fraction:ShapeFraction):PembilangScreen {
+			var screen:PembilangScreen = new PembilangScreen(the_fraction);
 			
 			//screen.addEventListener(CirclePenyebutScreen.NEXT_CLICKED, function (e:Event):void {
 				//trace("next...");
 				//active_screen = screen_list[CIRCLE_PEMBILANG_SCREEN];
 			//});
 			
-			screen.addEventListener(CirclePembilangScreen.BACK_CLICKED, function (e:Event):void {
-				trace("back..");
-				active_screen = screen_list[CIRCLE_PENYEBUT_SCREEN];
+			screen.addEventListener(PembilangScreen.BACK_CLICKED, function (e:Event):void {
+				trace("back to..");
+				if( the_fraction is RectFraction){
+					active_screen = screen_list[RECT_PENYEBUT_SCREEN];
+				} else if (the_fraction is CircleFraction) {
+					active_screen = screen_list[CIRCLE_PENYEBUT_SCREEN];
+				}
 			});
 			
 			return screen;

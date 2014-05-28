@@ -29,8 +29,8 @@ package com.fractionviewer
 			rect_width = width;
 			rect_height = height;
 			
-			this.pembilang = pembilang;
 			this.penyebut = penyebut;
+			this.pembilang = pembilang;
 			
 			if (stage) {
 				init();
@@ -68,10 +68,24 @@ package com.fractionviewer
 			var i:int;
 			
 			// draw sections
+			//trace("drawing sections...");
+			//trace("Pembilang: " + pembilang);
 			for ( i = 0; i < pembilang; i++) {
 				var section:Shape = new Shape();
 				section.graphics.beginFill(FILL_COLOR_SELECTED);
-				section.graphics.drawRect(i * sub_width + LINE_THICKNESS_OUTER/2, LINE_THICKNESS_OUTER/2, sub_width, rect_height - LINE_THICKNESS_OUTER);
+				if ( i == penyebut - 1) {
+					section.graphics.drawRect(
+						i * sub_width + LINE_THICKNESS_OUTER / 2, 
+						LINE_THICKNESS_OUTER / 2, 
+						sub_width - LINE_THICKNESS_OUTER, 
+						rect_height - LINE_THICKNESS_OUTER);
+				} else {
+					section.graphics.drawRect(
+						i * sub_width + LINE_THICKNESS_OUTER / 2, 
+						LINE_THICKNESS_OUTER / 2, 
+						sub_width, 
+						rect_height - LINE_THICKNESS_OUTER);	
+				}
 				section.graphics.endFill();
 				addChild(section);
 			}
@@ -86,6 +100,7 @@ package com.fractionviewer
 			}
 		}
 		
+		[Bindable]
 		override public function get pembilang():int 
 		{
 			return _pembilang;
@@ -93,7 +108,9 @@ package com.fractionviewer
 		
 		override public function set pembilang(value:int):void 
 		{
-			_pembilang = value;
+			if( value <= penyebut){
+				_pembilang = value;
+			}
 		}
 		
 		[Bindable]
@@ -144,10 +161,10 @@ package com.fractionviewer
 			var circle_radius:Number = 120;
 			
 			var rects:Array = new Array();
-			rects.push(new RectFraction(2.25 * circle_radius, 1.75 * circle_radius, 1, 2));
-			rects.push(new RectFraction(2.25 * circle_radius, 1.75 * circle_radius, 2, 3));
-			rects.push(new RectFraction(2.25 * circle_radius, 1.75 * circle_radius, 3, 4));
-			rects.push(new RectFraction(2.25 * circle_radius, 1.75 * circle_radius, 5, 6));
+			rects.push(new RectFraction(2.25 * circle_radius, 1.75 * circle_radius, 2, 2));
+			rects.push(new RectFraction(2.25 * circle_radius, 1.75 * circle_radius, 3, 3));
+			rects.push(new RectFraction(2.25 * circle_radius, 1.75 * circle_radius, 4, 4));
+			rects.push(new RectFraction(2.25 * circle_radius, 1.75 * circle_radius, 6, 6));
 			
 			for (var i:int = 0; i < rects.length; i++) {
 				rects[i].x = (i % 3) * (rects[i].rect_width + 15);

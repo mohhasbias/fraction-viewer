@@ -55,7 +55,6 @@
   <!-- SWC Libraries -->
   <libraryPaths>
     <element path="libs\greensock.swc" />
-    <element path="libs\MathMLFormulaLibProject.swc" />
   </libraryPaths>
   <!-- External Libraries -->
   <externalLibraryPaths>

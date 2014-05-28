@@ -50,7 +50,7 @@ package com.fractionviewer
 			the_fraction.buttonMode = true;
 			the_fraction.addEventListener(
 				MouseEvent.CLICK,
-				onCircleClicked);
+				onShapeClicked);
 			addChild(the_fraction);	
 			
 			var oneThirdStageWidth:Number = stage.stageWidth / 3;
@@ -108,15 +108,15 @@ package com.fractionviewer
 					addChild(the_fraction);
 				}
 				display_penyebut.text = the_fraction.pembilang + "\n" + the_fraction.penyebut;
-				the_fraction.addEventListener(MouseEvent.CLICK, onCircleClicked);
+				the_fraction.addEventListener(MouseEvent.CLICK, onShapeClicked);
 			});
 			
 			addEventListener(Event.REMOVED_FROM_STAGE, function(e:Event):void {
-				the_fraction.removeEventListener(MouseEvent.CLICK, onCircleClicked);
+				the_fraction.removeEventListener(MouseEvent.CLICK, onShapeClicked);
 			});
 		}
 		
-		private function onCircleClicked(e:MouseEvent):void {
+		private function onShapeClicked(e:MouseEvent):void {
 			trace("ouch");
 			the_fraction.pembilang += 1;
 			trace("pembilang: " + the_fraction.pembilang);
