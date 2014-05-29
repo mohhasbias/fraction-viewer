@@ -24,8 +24,9 @@ package com.fractionviewer
 		private const SHAPE_SELECT_SCREEN:int = 0;
 		private const CIRCLE_PENYEBUT_SCREEN:int = 1;
 		private const CIRCLE_PEMBILANG_SCREEN:int = 2;
-		private const RECT_PENYEBUT_SCREEN:int = 3;
-		private const RECT_PEMBILANG_SCREEN:int = 4;
+		private const CIRCLE_TEST:int = 3;
+		private const RECT_PENYEBUT_SCREEN:int = 4;
+		private const RECT_PEMBILANG_SCREEN:int = 5;
 		
 		public function Main()
 		{
@@ -53,15 +54,17 @@ package com.fractionviewer
 			screen_list[SHAPE_SELECT_SCREEN] = createAndSetupShapeChooserScreen(); 
 			screen_list[CIRCLE_PENYEBUT_SCREEN] = createAndSetupPenyebutScreen(circle_fraction); 
 			screen_list[CIRCLE_PEMBILANG_SCREEN] = createAndSetupPembilangScreen(circle_fraction);
+			screen_list[CIRCLE_TEST] = createAndSetupTestScreen(TestScreen.CIRCLE_TEST);
 			screen_list[RECT_PENYEBUT_SCREEN] = createAndSetupPenyebutScreen(rect_fraction);
 			screen_list[RECT_PEMBILANG_SCREEN] = createAndSetupPembilangScreen(rect_fraction);
 			
 			// activate first screen
-			active_screen = screen_list[SHAPE_SELECT_SCREEN];
+			//active_screen = screen_list[SHAPE_SELECT_SCREEN];
 			//active_screen = screen_list[CIRCLE_PENYEBUT_SCREEN];
 			//active_screen = screen_list[CIRCLE_PEMBILANG_SCREEN];
 			//active_screen = screen_list[RECT_PENYEBUT_SCREEN];
 			//active_screen = screen_list[RECT_PEMBILANG_SCREEN];
+			active_screen = screen_list[CIRCLE_TEST];
 			
 			//RectFraction.test(stage);
 			//PenyebutScreen.test(stage);
@@ -121,6 +124,12 @@ package com.fractionviewer
 					active_screen = screen_list[CIRCLE_PENYEBUT_SCREEN];
 				}
 			});
+			
+			return screen;
+		}
+		
+		private function createAndSetupTestScreen(test_type:int):Screen {
+			var screen:Screen = new TestScreen(TestScreen.CIRCLE_TEST);
 			
 			return screen;
 		}

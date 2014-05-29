@@ -8,9 +8,9 @@
     <movie fps="30" />
     <movie width="800" />
     <movie height="600" />
-    <movie version="12" />
+    <movie version="4" />
     <movie minorVersion="0" />
-    <movie platform="Flash Player" />
+    <movie platform="AIR Mobile" />
     <movie background="#CCCCCC" />
     <movie preferredSDK="Apache Flex 4.12.1 FP13.0 AIR13.0 en_US;4.12.1;" />
   </output>
@@ -87,7 +87,7 @@
   <!-- Other project options -->
   <options>
     <option showHiddenPaths="False" />
-    <option testMovie="ExternalPlayer" />
+    <option testMovie="Unknown" />
     <option testMovieCommand="bin/index.html" />
   </options>
   <!-- Plugin storage -->
