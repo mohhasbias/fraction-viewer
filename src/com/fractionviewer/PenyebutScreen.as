@@ -17,7 +17,7 @@ package com.fractionviewer
 	 * ...
 	 * @author Moh Hasbi Assidiqi
 	 */
-	public class PenyebutScreen extends Sprite 
+	public class PenyebutScreen extends Screen 
 	{
 		public static const NEXT_CLICKED:String = "Next Clicked";
 		public static const BACK_CLICKED:String = "Back Clicked";
@@ -134,43 +134,6 @@ package com.fractionviewer
 		private function onShapeClicked(e:MouseEvent):void {
 			trace("ouch");
 			the_fraction.penyebut += 1;
-		}
-		
-		protected function createButton(text:String, width:int = 150, height:int = 50):Sprite 
-		{
-			var rect_width:int = width;
-			var rect_height:int = height;
-			
-			var round_rect:Shape = new Shape();
-			round_rect.graphics.lineStyle(1, 0x666666);
-			round_rect.graphics.beginFill(0xEFEFEF);
-			round_rect.graphics.drawRoundRect(0, 0, rect_width, rect_height, 7, 7);
-			round_rect.graphics.endFill();
-			
-			var round_rect_darker:Shape = new Shape();
-			round_rect_darker.graphics.lineStyle(1, 0x666666);
-			round_rect_darker.graphics.beginFill(0xD4D4D4);
-			round_rect_darker.graphics.drawRoundRect(0, 0, rect_width, rect_height, 7, 7);
-			round_rect_darker.graphics.endFill();
-			
-			
-			var label:TextField = new TextField();
-			label.width = rect_width;
-			label.height = rect_height;
-			label.defaultTextFormat = new TextFormat("Verdana", 36, 0x000000,null,null,null,null,null,TextFormatAlign.CENTER);
-			label.text = text;
-			label.mouseEnabled = false;
-			
-			var the_button:SimpleButton = new SimpleButton();
-			the_button.downState = the_button.hitTestState = round_rect;
-			the_button.overState = round_rect_darker;
-			the_button.upState = round_rect;
-			
-			var button_sprite:Sprite = new Sprite();
-			button_sprite.addChild(the_button);
-			button_sprite.addChild(label);
-			
-			return button_sprite;
 		}
 		
 		public static function test(the_stage:Stage, the_fraction:ShapeFraction = null):void {
