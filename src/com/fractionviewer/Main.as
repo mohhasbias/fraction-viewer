@@ -111,10 +111,12 @@ package com.fractionviewer
 		private function createAndSetupPembilangScreen(the_fraction:ShapeFraction):PembilangScreen {
 			var screen:PembilangScreen = new PembilangScreen(the_fraction);
 			
-			//screen.addEventListener(CirclePenyebutScreen.NEXT_CLICKED, function (e:Event):void {
-				//trace("next...");
-				//active_screen = screen_list[CIRCLE_PEMBILANG_SCREEN];
-			//});
+			screen.addEventListener(CirclePenyebutScreen.NEXT_CLICKED, function (e:Event):void {
+				trace("next...");
+				if( the_fraction is CircleFraction){
+					active_screen = screen_list[CIRCLE_TEST];
+				}
+			});
 			
 			screen.addEventListener(PembilangScreen.BACK_CLICKED, function (e:Event):void {
 				trace("back to..");
@@ -130,6 +132,13 @@ package com.fractionviewer
 		
 		private function createAndSetupTestScreen(test_type:int):Screen {
 			var screen:Screen = new TestScreen(TestScreen.CIRCLE_TEST);
+			
+			screen.addEventListener(TestScreen.BACK_CLICKED, function(e:Event):void {
+				trace("back..");
+				if (test_type == TestScreen.CIRCLE_TEST) {
+					active_screen = screen_list[CIRCLE_PEMBILANG_SCREEN];
+				}
+			});
 			
 			return screen;
 		}

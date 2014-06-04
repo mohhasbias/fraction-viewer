@@ -30,8 +30,8 @@ package com.fractionviewer
 			super();
 			
 			this.radius = radius;
-			this.pembilang = pembilang;
 			this.penyebut = penyebut;
+			this.pembilang = pembilang;
 			
 			this.x_origin = radius;
 			this.y_origin = radius;

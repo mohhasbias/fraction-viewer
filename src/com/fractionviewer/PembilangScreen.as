@@ -65,6 +65,7 @@ package com.fractionviewer
 			display_penyebut.defaultTextFormat = 
 				new TextFormat("Verdana", 72, 0x000000, true, null, null, null, null, TextFormatAlign.CENTER);
 			display_penyebut.text = the_fraction.pembilang + "\n" + the_fraction.penyebut;
+			display_penyebut.selectable = false;
 			addChild(display_penyebut);
 			
 			var separator:Shape = new Shape();
@@ -85,14 +86,14 @@ package com.fractionviewer
 				the_fraction,
 				"pembilang");
 				
-			//var next_button:Sprite = createButton("Test");
-			//next_button.x = 2 * oneThirdStageWidth;
-			//next_button.y = 2 * oneThirdStageHeight + oneThirdStageHeight/2;
-			//addChild(next_button);
+			var next_button:Sprite = createButton("Test");
+			next_button.x = 2 * oneThirdStageWidth;
+			next_button.y = 2 * oneThirdStageHeight + oneThirdStageHeight/2;
+			addChild(next_button);
 			
-			//next_button.addEventListener(MouseEvent.MOUSE_DOWN, function(e:MouseEvent):void {
-				//dispatchEvent(new Event(TEST_CLICKED));
-			//});
+			next_button.addEventListener(MouseEvent.MOUSE_DOWN, function(e:MouseEvent):void {
+				dispatchEvent(new Event(TEST_CLICKED));
+			});
 			
 			var back_button:Sprite = createButton("Back");
 			back_button.x = oneThirdStageWidth - back_button.width;

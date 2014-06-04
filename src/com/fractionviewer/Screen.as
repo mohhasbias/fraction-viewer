@@ -3,6 +3,7 @@ package com.fractionviewer
 	import flash.display.Shape;
 	import flash.display.SimpleButton;
 	import flash.display.Sprite;
+	import flash.filters.BevelFilter;
 	import flash.filters.DropShadowFilter;
 	import flash.text.TextField;
 	import flash.text.TextFormat;
@@ -32,12 +33,20 @@ package com.fractionviewer
 			round_rect.graphics.drawRoundRect(0, 0, rect_width, rect_height, 7, 7);
 			round_rect.graphics.endFill();
 			round_rect.filters = [new DropShadowFilter() ];
+			//round_rect.filters = [new BevelFilter() ];
+			
+			var round_rect_flat:Shape = new Shape();
+			round_rect_flat.graphics.lineStyle(1, 0x666666);
+			round_rect_flat.graphics.beginFill(0xEFEFEF);
+			round_rect_flat.graphics.drawRoundRect(0, 0, rect_width, rect_height, 7, 7);
+			round_rect_flat.graphics.endFill();
 			
 			var round_rect_darker:Shape = new Shape();
 			round_rect_darker.graphics.lineStyle(1, 0x666666);
 			round_rect_darker.graphics.beginFill(0xD4D4D4);
 			round_rect_darker.graphics.drawRoundRect(0, 0, rect_width, rect_height, 7, 7);
 			round_rect_darker.graphics.endFill();
+			//round_rect_darker.filters = [new BevelFilter()];
 			round_rect_darker.filters = [ new DropShadowFilter() ];
 			
 			
@@ -49,7 +58,7 @@ package com.fractionviewer
 			label.mouseEnabled = false;
 			
 			var the_button:SimpleButton = new SimpleButton();
-			the_button.downState = the_button.hitTestState = round_rect;
+			the_button.downState = the_button.hitTestState = round_rect_flat;
 			the_button.overState = round_rect_darker;
 			the_button.upState = round_rect;
 			
