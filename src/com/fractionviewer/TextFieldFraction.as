@@ -53,7 +53,8 @@ package com.fractionviewer
 			removeEventListener(Event.ADDED_TO_STAGE, init);
 			// entry point
 		
-			display_pembilang.autoSize = TextFieldAutoSize.CENTER;
+			//display_pembilang.autoSize = TextFieldAutoSize.CENTER;
+			display_pembilang.width = 120;
 			display_pembilang.filters = [new BevelFilter(1)];
 			display_pembilang.defaultTextFormat = 
 				new TextFormat("Verdana", 72, 0x000000, true, false, false, null, null, TextFormatAlign.CENTER);
@@ -70,7 +71,8 @@ package com.fractionviewer
 			
 			var spacing:int = 16;
 			
-			display_penyebut.autoSize = TextFieldAutoSize.CENTER;
+			//display_penyebut.autoSize = TextFieldAutoSize.CENTER;
+			display_penyebut.width = 120;
 			display_penyebut.y = display_pembilang.y + display_pembilang.height + spacing;
 			display_penyebut.filters = [new BevelFilter(1)];
 			display_penyebut.defaultTextFormat = 
@@ -88,14 +90,14 @@ package com.fractionviewer
 			
 			thickness = 10;
 			separator = new Shape();
-			separator.x = display_pembilang.x - display_pembilang.width/2;
+			separator.x = display_pembilang.x - display_pembilang.width/4;
 			separator.y = display_penyebut.y - spacing / 2;
 			addChild(separator);
 			
 			separator.graphics.lineStyle(thickness, 0x000000, 1, true, "normal", CapsStyle.SQUARE);
-			separator.graphics.lineTo(display_pembilang.width * 2, 0);
+			separator.graphics.lineTo(display_pembilang.width * 1.5, 0);
 			
-			stage.focus = display_pembilang;
+			//stage.focus = display_pembilang;
 		}
 		
 		private function onTextFieldFocused(e:FocusEvent):void {
@@ -131,6 +133,14 @@ package com.fractionviewer
 		{
 			_penyebut = value;
 			display_penyebut.text = _penyebut.toString();
+		}
+		
+		public function get view_width():int {
+			return width;
+		}
+		
+		public function focus():void {
+			stage.focus = display_pembilang;
 		}
 	}
 

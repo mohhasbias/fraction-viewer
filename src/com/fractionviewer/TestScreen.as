@@ -14,6 +14,7 @@ package com.fractionviewer
 		
 		private var test_type:int;
 		private var fractions:Array;
+		private var answers:Array;
 		
 		public static const BACK_CLICKED:String = "Back Clicked";
 		
@@ -52,12 +53,13 @@ package com.fractionviewer
 			
 			cek_button.addEventListener(MouseEvent.CLICK, onCekButtonClicked);
 			
-			var text_fraction:TextFieldFraction = new TextFieldFraction();
-			addChild(text_fraction);
+			//var text_fraction:TextFieldFraction = new TextFieldFraction();
+			//addChild(text_fraction);
 			
 			var numFraction:int = 3;
 			var i:int;
 			fractions = new Array();
+			answers = new Array();
 			var max_fraction:int = 10;
 			for (i = 0; i < numFraction; i++) {
 				var penyebut:int = 2 + Math.floor(Math.random() * (max_fraction-2));
@@ -66,6 +68,7 @@ package com.fractionviewer
 				if (test_type == CIRCLE_TEST) {
 					fractions.push(new CircleFraction(90, pembilang, penyebut));
 				}
+				answers.push(new TextFieldFraction());
 			}
 			var sub_width:Number = stage.stageWidth / numFraction;
 			var sub_height:Number = stage.stageHeight / 3;
@@ -75,7 +78,14 @@ package com.fractionviewer
 				fractions[i].y = (sub_height - fractions[i].view_height/2) / 2;
 				
 				addChild(fractions[i]);
+				
+				answers[i].x = i * sub_width + answers[i].view_width;
+				answers[i].y = (sub_height - answers[i].height / 2) / 2;
+				
+				addChild(answers[i]);
 			}
+			
+			answers[0].focus();
 		}
 		
 		private function onCekButtonClicked(e:MouseEvent):void {
