@@ -29,9 +29,15 @@ package com.fractionviewer
 		//private var spacing:int;
 		private var thickness:int;
 		
+		private var display_penyebut:TextField;
+		private var display_pembilang:TextField;
+		
 		public function TextFieldFraction(pembilang:int = 3, penyebut:int = 4 ) 
 		{
 			super();
+			
+			display_pembilang = new TextField();
+			display_penyebut = new TextField();
 			
 			this.pembilang = pembilang;
 			this.penyebut = penyebut;
@@ -50,7 +56,8 @@ package com.fractionviewer
 			var oneThirdStageWidth:Number = stage.stageWidth / 3;
 			var oneThirdStageHeight:Number = stage.stageHeight / 3;
 			
-			var display_pembilang:TextField = new TextField();
+			//var display_pembilang:TextField = new TextField();
+			//display_pembilang = new TextField();
 			display_pembilang.autoSize = TextFieldAutoSize.CENTER;
 			display_pembilang.x = stage.stageWidth / 2;
 			display_pembilang.y = oneThirdStageHeight + oneThirdStageHeight/3;
@@ -68,11 +75,13 @@ package com.fractionviewer
 			display_pembilang.text = pembilang.toString();
 			
 			display_pembilang.addEventListener(FocusEvent.FOCUS_IN, onTextFieldFocused);
+			display_pembilang.addEventListener(TextEvent.TEXT_INPUT, onTextFieldInput);
 			
 			var spacing:int = 16;
 			//spacing = 16;
 			
-			var display_penyebut:TextField = new TextField();
+			//var display_penyebut:TextField = new TextField();
+			//display_penyebut = new TextField();
 			display_penyebut.autoSize = TextFieldAutoSize.CENTER;
 			display_penyebut.x = stage.stageWidth / 2;
 			display_penyebut.y = display_pembilang.y + display_pembilang.height + spacing;
@@ -121,22 +130,26 @@ package com.fractionviewer
 		
 		public function get pembilang():int 
 		{
+			_pembilang = parseInt(display_pembilang.text);
 			return _pembilang;
 		}
 		
 		public function set pembilang(value:int):void 
 		{
 			_pembilang = value;
+			display_pembilang.text = _pembilang.toString();
 		}
 		
 		public function get penyebut():int 
 		{
+			_penyebut = parseInt(display_penyebut.text);
 			return _penyebut;
 		}
 		
 		public function set penyebut(value:int):void 
 		{
 			_penyebut = value;
+			display_penyebut.text = _penyebut.toString();
 		}
 	}
 
