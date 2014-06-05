@@ -79,10 +79,10 @@ package com.fractionviewer
 				
 				addChild(fractions[i]);
 				
-				answers[i].x = i * sub_width + answers[i].view_width;
-				answers[i].y = (sub_height - answers[i].height / 2) / 2;
-				
 				addChild(answers[i]);
+				
+				answers[i].x = i * sub_width + answers[i].width/2;
+				answers[i].y = sub_height + answers[i].height/3;
 			}
 			
 			answers[0].focus();

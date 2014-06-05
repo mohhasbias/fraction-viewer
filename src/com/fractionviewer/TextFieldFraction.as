@@ -55,6 +55,7 @@ package com.fractionviewer
 		
 			//display_pembilang.autoSize = TextFieldAutoSize.CENTER;
 			display_pembilang.width = 120;
+			display_pembilang.height = 90;
 			display_pembilang.filters = [new BevelFilter(1)];
 			display_pembilang.defaultTextFormat = 
 				new TextFormat("Verdana", 72, 0x000000, true, false, false, null, null, TextFormatAlign.CENTER);
@@ -73,6 +74,7 @@ package com.fractionviewer
 			
 			//display_penyebut.autoSize = TextFieldAutoSize.CENTER;
 			display_penyebut.width = 120;
+			display_penyebut.height = 90;
 			display_penyebut.y = display_pembilang.y + display_pembilang.height + spacing;
 			display_penyebut.filters = [new BevelFilter(1)];
 			display_penyebut.defaultTextFormat = 
@@ -136,7 +138,7 @@ package com.fractionviewer
 		}
 		
 		public function get view_width():int {
-			return width;
+			return separator.width;
 		}
 		
 		public function focus():void {
