@@ -52,20 +52,11 @@ package com.fractionviewer
 		private function init(e:Event = null):void {
 			removeEventListener(Event.ADDED_TO_STAGE, init);
 			// entry point
-			
-			var oneThirdStageWidth:Number = stage.stageWidth / 3;
-			var oneThirdStageHeight:Number = stage.stageHeight / 3;
-			
-			//var display_pembilang:TextField = new TextField();
-			//display_pembilang = new TextField();
+		
 			display_pembilang.autoSize = TextFieldAutoSize.CENTER;
-			display_pembilang.x = stage.stageWidth / 2;
-			display_pembilang.y = oneThirdStageHeight + oneThirdStageHeight/3;
-			//display_pembilang.filters = [new DropShadowFilter(2, 180+45, 0x000000, 1, 4, 4, 1, 3, true)];
 			display_pembilang.filters = [new BevelFilter(1)];
 			display_pembilang.defaultTextFormat = 
 				new TextFormat("Verdana", 72, 0x000000, true, false, false, null, null, TextFormatAlign.CENTER);
-			//display_fraction.selectable = false;
 			display_pembilang.type = TextFieldType.INPUT;
 			display_pembilang.background = true;
 			display_pembilang.restrict = "0-9";
@@ -78,18 +69,12 @@ package com.fractionviewer
 			display_pembilang.addEventListener(TextEvent.TEXT_INPUT, onTextFieldInput);
 			
 			var spacing:int = 16;
-			//spacing = 16;
 			
-			//var display_penyebut:TextField = new TextField();
-			//display_penyebut = new TextField();
 			display_penyebut.autoSize = TextFieldAutoSize.CENTER;
-			display_penyebut.x = stage.stageWidth / 2;
 			display_penyebut.y = display_pembilang.y + display_pembilang.height + spacing;
-			//display_penyebut.filters = [new DropShadowFilter(2, 180+45, 0x000000, 1, 4, 4, 1, 3, true)];
 			display_penyebut.filters = [new BevelFilter(1)];
 			display_penyebut.defaultTextFormat = 
 				new TextFormat("Verdana", 72, 0x000000, true, false, false, null, null, TextFormatAlign.CENTER);
-			//display_penyebut.selectable = false;
 			display_penyebut.type = TextFieldType.INPUT;
 			display_penyebut.background = true;
 			display_penyebut.restrict = "0-9";
@@ -101,9 +86,7 @@ package com.fractionviewer
 			display_penyebut.addEventListener(FocusEvent.FOCUS_IN, onTextFieldFocused);
 			display_penyebut.addEventListener(TextEvent.TEXT_INPUT, onTextFieldInput);
 			
-			//var thickness:int = 10;
 			thickness = 10;
-			//var separator:Shape = new Shape();
 			separator = new Shape();
 			separator.x = display_pembilang.x - display_pembilang.width/2;
 			separator.y = display_penyebut.y - spacing / 2;
@@ -123,9 +106,7 @@ package com.fractionviewer
 		}
 		
 		private function onTextFieldInput(e:TextEvent):void {
-			//separator.graphics.clear();
-			//separator.graphics.lineStyle(thickness, 0x000000, 1, true, "normal", CapsStyle.SQUARE);
-			//separator.graphics.lineTo(e.currentTarget.width, 0);
+			
 		}
 		
 		public function get pembilang():int 
