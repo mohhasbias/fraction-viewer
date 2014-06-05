@@ -1,2 +1,3 @@
 - [ ] create intro tweening @ShapeChooserScreen
 - [ ] create test screen
+- [ ] hide pembilang on PenyebutScreen

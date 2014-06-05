@@ -13,6 +13,7 @@ package com.fractionviewer
 		public static const RECT_TEST:int = 1;
 		
 		private var test_type:int;
+		private var fractions:Array;
 		
 		public static const BACK_CLICKED:String = "Back Clicked";
 		
@@ -49,9 +50,14 @@ package com.fractionviewer
 			cek_button.y = 2 * oneThirdStageHeight + oneThirdStageHeight / 2;
 			addChild(cek_button);
 			
+			cek_button.addEventListener(MouseEvent.CLICK, onCekButtonClicked);
+			
+			var text_fraction:TextFieldFraction = new TextFieldFraction();
+			addChild(text_fraction);
+			
 			var numFraction:int = 3;
 			var i:int;
-			var fractions:Array = new Array();
+			fractions = new Array();
 			var max_fraction:int = 10;
 			for (i = 0; i < numFraction; i++) {
 				var penyebut:int = 2 + Math.floor(Math.random() * (max_fraction-2));
@@ -70,6 +76,10 @@ package com.fractionviewer
 				
 				addChild(fractions[i]);
 			}
+		}
+		
+		private function onCekButtonClicked(e:MouseEvent):void {
+			
 		}
 	}
 
